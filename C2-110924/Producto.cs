@@ -17,7 +17,28 @@ namespace C2_110924
             _cantidad = cantidad;
         }
 
-        public string Nombre { get; set; }
-        public int Cantidad { get; set; }
+        public string Nombre
+        {
+            get { return _nombre; }
+            set
+            {
+                if (value != String.Empty)
+                {
+                    _nombre = value;
+                }
+            }
+        }
+        
+        public int Cantidad
+        {
+            get { return _cantidad; }
+            set
+            {
+                if (value > 0)
+                {
+                    _cantidad = value;
+                }
+            }
+        }
     }
 }

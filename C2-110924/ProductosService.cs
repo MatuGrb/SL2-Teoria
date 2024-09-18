@@ -8,6 +8,7 @@ namespace C2_110924
 {
     internal static class ProductosService
     {
+        // Esta clase implementa el controlador de persistencia
         private static string GetAppPath()
         {
             return AppContext.BaseDirectory;
@@ -35,6 +36,35 @@ namespace C2_110924
                     string datos = $"{unProducto.Nombre};{unProducto.Cantidad}";
                     archivoSalida.WriteLine(datos);
                 }
+            }
+        }
+
+        static void LeerProductos()
+        {
+            // Se establece el nombre del archivo a leer
+            string fileName = Path.Combine(GetAppPath(), "datos.txt");
+            if (File.Exists(fileName))
+            {
+                // Se lee el archivo ya que existe
+                // Se genera un StreamReader para controlar la lectura de datos
+                //using (StreamReader archivoEntrada = new StreamReader(fileName))
+                //{
+                    // Se lee el archivo completo
+                //    string contenido = archivoEntrada.ReadLine();
+                //    Console.WriteLine(contenido);
+                //}
+                List<Producto> productos = new List<Producto>();
+                string[] lineas = File.ReadAllLines(fileName);
+                foreach (string productoComoTexto in lineas) 
+                {
+                    var datos = productoComoTexto.Split(";");
+                    Producto unProducto = new Producto(datos[0], int.Parse(datos[1]));
+                    productos.Add(unProducto);  
+                }
+            }
+            else
+            {
+                Console.WriteLine("El archivo no existe");
             }
         }
 
