@@ -17,14 +17,14 @@ namespace C2_110924
         public static void GuardarProducto(Producto unProducto)
         {
             // Se establece el nombre del archivo a escribir
-            string fileName = Path.Combine(GetAppPath(), "datos.txt");
+            string fileName = Path.Combine(GetAppPath(), "productos.txt");
             if (!File.Exists(fileName))
             {
                 // Se crea y escribe el archivo ya que no existe
                 // Se genera un StreamWriter para controlar la escritura de datos
                 using (StreamWriter archivoSalida = new StreamWriter(fileName))
                 {
-                    string datos = $"{unProducto.Nombre};{unProducto.Cantidad}";
+                    string datos = $"{unProducto.ID};{unProducto.Nombre};{unProducto.Cantidad}";
                     archivoSalida.WriteLine(datos);
                 }
             }
@@ -33,16 +33,16 @@ namespace C2_110924
                 // Se añaden datos al archivo ya que existe, para eso se establece el segundo parámetro
                 using (StreamWriter archivoSalida = new StreamWriter(fileName, true))
                 {
-                    string datos = $"{unProducto.Nombre};{unProducto.Cantidad}";
+                    string datos = $"{unProducto.ID};{unProducto.Nombre};{unProducto.Cantidad}";
                     archivoSalida.WriteLine(datos);
                 }
             }
         }
 
-        static void LeerProductos()
+        public static List<Producto> LeerProductos()
         {
             // Se establece el nombre del archivo a leer
-            string fileName = Path.Combine(GetAppPath(), "datos.txt");
+            string fileName = Path.Combine(GetAppPath(), "productos.txt");
             if (File.Exists(fileName))
             {
                 // Se lee el archivo ya que existe
@@ -58,13 +58,15 @@ namespace C2_110924
                 foreach (string productoComoTexto in lineas) 
                 {
                     var datos = productoComoTexto.Split(";");
-                    Producto unProducto = new Producto(datos[0], int.Parse(datos[1]));
+                    Producto unProducto = new Producto(datos[0], datos[1], int.Parse(datos[2]));
                     productos.Add(unProducto);  
                 }
+                return productos;
             }
             else
             {
                 Console.WriteLine("El archivo no existe");
+                return null;
             }
         }
 

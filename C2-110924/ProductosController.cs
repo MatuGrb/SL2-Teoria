@@ -16,6 +16,21 @@ namespace C2_110924
             // Mandamos los datos al almacenamiento
             ProductosService.GuardarProducto(unProducto);
         }
+        
+        public static List<Producto> LeerProductos()
+        {
+            List<Producto> productos = new List<Producto>();
+            productos = ProductosService.LeerProductos();
+            if (productos != null)
+            {
+                // Existen productos y está caargada la colección
+                return productos;
+            }
+            else
+            {
+                throw new Exception("No hay productos para mostrar");
+            }
+        }
 
     }
 }
