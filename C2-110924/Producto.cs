@@ -44,7 +44,7 @@ namespace C2_110924
             }
         }
         
-        public int Cantidad
+        public int Cantidad // ESTO SE TIENE QUE IR
         {
             get { return _cantidad; }
             set
@@ -74,11 +74,16 @@ namespace C2_110924
             }
         }
 
+        public void CargarMovimientos(List<Movimiento> listaMovimientos)
+        {
+            _movimientos = listaMovimientos;
+        }
+
         // Se define la lista de movimientos de stock
         private List<Movimiento> _movimientos = new List<Movimiento>();
 
         // Se definen los métodos para agregar y restar stock
-        public void agregarUnidades(string idMovimiento, int cantidadUnidades,
+        public Movimiento agregarUnidades(string idMovimiento, int cantidadUnidades,
             DateTime fecha)
         {
             // Se genera el objeto para registrar el movimiento
@@ -86,9 +91,10 @@ namespace C2_110924
                 fecha);
             // Se carga el movimiento en la lista del objeto
             _movimientos.Add(carga);
+            return carga;
         }
 
-        public void restarUnidades(string idMovimiento, int cantidadUnidades,
+        public Movimiento restarUnidades(string idMovimiento, int cantidadUnidades,
             DateTime fecha)
         {
             // Se genera el objeto para registrar el movimiento
@@ -96,6 +102,7 @@ namespace C2_110924
                 fecha);
             // Se carga el movimiento en la lista del objeto
             _movimientos.Add(descarga);
+            return descarga;
         }
     }
 }

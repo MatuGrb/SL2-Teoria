@@ -66,14 +66,16 @@ namespace C2_110924
                 if (this.cbxTipoMovimiento.SelectedIndex == 0)
                 {
                     // Ingreso
-                    _unProducto.agregarUnidades("123", cantidadIngresada, DateTime.Now);
+                    Movimiento unMovimiento = _unProducto.agregarUnidades("123", cantidadIngresada, DateTime.Now);
+                    ProductosController.AgregarMovimiento(_unProducto, unMovimiento);
                 }
                 else
                 {
                     // Egreso
                     try
                     {
-                        _unProducto.restarUnidades("123", cantidadIngresada, DateTime.Now);
+                        Movimiento unMovimiento = _unProducto.restarUnidades("123", cantidadIngresada, DateTime.Now);
+                        ProductosController.AgregarMovimiento(_unProducto, unMovimiento);
                     }
                     catch (Exception ex)
                     {
