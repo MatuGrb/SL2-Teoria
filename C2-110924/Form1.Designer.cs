@@ -114,6 +114,7 @@
             btnModificar.TabIndex = 12;
             btnModificar.Text = "Modificar stock";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // cbxTipoMovimiento
             // 

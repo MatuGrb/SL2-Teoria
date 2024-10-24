@@ -65,7 +65,7 @@ namespace C2_110924
             }
             else
             {
-                Console.WriteLine("El archivo no existe");
+                // Console.WriteLine("El archivo no existe");
                 return null;
             }
         }

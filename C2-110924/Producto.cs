@@ -61,5 +61,41 @@ namespace C2_110924
             return $"{_nombre} [{_id}] | Stock actual: {_cantidad}";
         }
 
+        public int StockActual
+        {
+            get
+            {
+                int stockActual = 0;
+                foreach (var movimiento in this._movimientos)
+                {
+                    stockActual += movimiento.Cantidad;
+                }
+                return stockActual;
+            }
+        }
+
+        // Se define la lista de movimientos de stock
+        private List<Movimiento> _movimientos = new List<Movimiento>();
+
+        // Se definen los métodos para agregar y restar stock
+        public void agregarUnidades(string idMovimiento, int cantidadUnidades,
+            DateTime fecha)
+        {
+            // Se genera el objeto para registrar el movimiento
+            Movimiento carga = new Movimiento(idMovimiento, cantidadUnidades,
+                fecha);
+            // Se carga el movimiento en la lista del objeto
+            _movimientos.Add(carga);
+        }
+
+        public void restarUnidades(string idMovimiento, int cantidadUnidades,
+            DateTime fecha)
+        {
+            // Se genera el objeto para registrar el movimiento
+            Movimiento descarga = new Movimiento(idMovimiento, -cantidadUnidades,
+                fecha);
+            // Se carga el movimiento en la lista del objeto
+            _movimientos.Add(descarga);
+        }
     }
 }
