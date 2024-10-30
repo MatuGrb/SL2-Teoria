@@ -32,9 +32,12 @@ namespace C2_110924
 
         public static List<Producto> LeerProductos()
         {
+            // Capa de negocios hace la llamada a la de persistencia para traer los datos
             List<Producto> productos = new List<Producto>();
             productos = ProductosService.LeerProductos();
-            if (productos != null)
+            // la lista no va a ser null porque está generada
+            // se tiene que controlar por count == 0
+            if (productos != null) 
             {
                 // Existen productos y está caargada la colección
                 // Se cargan todos los movimientos para cada producto

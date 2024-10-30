@@ -99,7 +99,7 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(nupCantidadMovimineto);
-            groupBox1.Location = new Point(15, 370);
+            groupBox1.Location = new Point(15, 431);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(781, 145);
             groupBox1.TabIndex = 5;
@@ -156,7 +156,7 @@
             lstProductos.ItemHeight = 28;
             lstProductos.Location = new Point(13, 282);
             lstProductos.Name = "lstProductos";
-            lstProductos.Size = new Size(498, 88);
+            lstProductos.Size = new Size(498, 144);
             lstProductos.TabIndex = 6;
             // 
             // label4
@@ -208,7 +208,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(823, 527);
+            ClientSize = new Size(823, 615);
             Controls.Add(txtID);
             Controls.Add(label7);
             Controls.Add(btnRecargar);

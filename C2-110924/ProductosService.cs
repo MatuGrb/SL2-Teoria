@@ -24,6 +24,7 @@ namespace C2_110924
                 // Se genera un StreamWriter para controlar la escritura de datos
                 using (StreamWriter archivoSalida = new StreamWriter(fileName))
                 {
+                    // TODO: cambiar el uso de Cantidad por StockActual o podría NO guardarse
                     string datos = $"{unProducto.ID};{unProducto.Nombre};{unProducto.Cantidad}";
                     archivoSalida.WriteLine(datos);
                 }
@@ -33,6 +34,7 @@ namespace C2_110924
                 // Se añaden datos al archivo ya que existe, para eso se establece el segundo parámetro
                 using (StreamWriter archivoSalida = new StreamWriter(fileName, true))
                 {
+                    // TODO: cambiar el uso de Cantidad por StockActual o podría NO guardarse
                     string datos = $"{unProducto.ID};{unProducto.Nombre};{unProducto.Cantidad}";
                     archivoSalida.WriteLine(datos);
                 }
@@ -58,6 +60,7 @@ namespace C2_110924
                 foreach (string productoComoTexto in lineas) 
                 {
                     var datos = productoComoTexto.Split(";");
+                    // si se cambia (eliminando) el campo de cantidad se tiene que modificar acá la lectura
                     Producto unProducto = new Producto(datos[0], datos[1], int.Parse(datos[2]));
                     productos.Add(unProducto);  
                 }
@@ -65,7 +68,7 @@ namespace C2_110924
             }
             else
             {
-                // Console.WriteLine("El archivo no existe");
+                // TODO: Generar una exception con este caso
                 return null;
             }
         }

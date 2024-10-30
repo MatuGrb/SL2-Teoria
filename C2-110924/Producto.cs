@@ -11,13 +11,13 @@ namespace C2_110924
     {
         private string _id;
         private string _nombre;
-        private int _cantidad;
+        private int _cantidad;// ESTO SE TIENE QUE IR
 
         public Producto(string id,  string nombre, int cantidad)
         {
             _id = id;
             _nombre = nombre;
-            _cantidad = cantidad;
+            _cantidad = cantidad;// ESTO SE TIENE QUE IR
         }
 
         public string ID
@@ -58,7 +58,7 @@ namespace C2_110924
         public override string ToString()
         {
             // Personaliza la representación de la instancia como cadena
-            return $"{_nombre} [{_id}] | Stock actual: {_cantidad}";
+            return $"{_nombre} [{_id}] | Stock actual: {_cantidad}"; // Stock actual debería usar la propiedad
         }
 
         public int StockActual
