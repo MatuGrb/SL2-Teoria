@@ -48,7 +48,8 @@ class Program
         else 
         {
             // Se añaden datos al archivo ya que existe, para eso se establece el segundo parámetro
-            using (StreamWriter archivoSalida = new StreamWriter(fileName, true)) 
+            // using (StreamWriter archivoSalida = new StreamWriter(fileName, true)) 
+            using (StreamWriter archivoSalida = new StreamWriter(fileName)) 
             {
                 archivoSalida.WriteLine("Nuevos datos en una nueva línea");
             }
