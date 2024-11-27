@@ -27,11 +27,52 @@ app.MapGet("/{username}", (string username) =>
     return $"Hola, {username}!";
 });
 
-app.MapPost("/producto", async (AppDbContext db, Producto producto) => 
+app.MapPost("/productos", async (AppDbContext db, Producto producto) => 
 {    
     db.Productos.Add(producto);
     await db.SaveChangesAsync();
     return $"Producto {producto.Nombre} creado con éxito!";
+});
+
+app.MapGet("/productos", async (AppDbContext db) => 
+{    
+    var productos = await db.Productos.ToListAsync();
+    return productos;
+});
+
+app.MapGet("/productos/{id}", async (AppDbContext db, int id) =>
+{
+    var producto = await db.Productos.FindAsync(id);
+    if (producto == null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(producto);
+});
+
+app.MapDelete("/productos/{id}", async (AppDbContext db, int id) =>
+{
+    var producto = await db.Productos.FindAsync(id);
+    if (producto == null)
+    {
+        return Results.NotFound();
+    }
+    db.Productos.Remove(producto);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
+
+app.MapPut("/productos/{id}", async (AppDbContext db, int id, Producto producto) =>
+{
+    var productoActual = await db.Productos.FindAsync(id);
+    if (productoActual == null)
+    {
+        return Results.NotFound();
+    }
+    productoActual.Nombre = producto.Nombre;
+    productoActual.Precio = producto.Precio;
+    await db.SaveChangesAsync();
+    return Results.Ok($"Producto {productoActual.Nombre} actualizado con éxito!");
 });
 
 app.Run();
