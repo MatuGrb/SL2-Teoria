@@ -1,0 +1,70 @@
+﻿@page "/productos"
+@using BlazorApp1.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<PageTitle>Listado demonstrates productos</PageTitle>
+
+<h1>Productos</h1>
+
+<p>Listado de productos.</p>
+
+<button class="btn btn-primary" @onclick="AgregarProducto">Agregar Producto</button>
+
+@if (productos == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in productos)
+            {
+                <tr>
+                    <td>@producto.Id</td>
+                    <td>@producto.Nombre</td>
+                    <td>@producto.Precio</td>
+                    <td>
+                        <button class="btn btn-warning" @onclick="() => EditarProducto(producto.Id)">Editar</button>
+                        <button class="btn btn-danger" @onclick="() => EliminarProducto(producto.Id)">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Producto[]? productos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        productos = await Http.GetFromJsonAsync<Producto[]>("http://localhost:5273/productos");
+    }
+
+    private void AgregarProducto()
+    {
+        NavigationManager.NavigateTo("/productoform");
+    }
+
+    private void EditarProducto(int id)
+    {
+        NavigationManager.NavigateTo($"/productoform/{id}");
+    }
+
+    private async Task EliminarProducto(int id)
+    {
+        await Http.DeleteAsync($"http://localhost:5273/productos/{id}");
+        productos = await Http.GetFromJsonAsync<Producto[]>("http://localhost:5273/productos");
+    }
+
+}

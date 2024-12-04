@@ -1,0 +1,56 @@
+﻿@page "/productoform"
+@page "/productoform/{Id:int}"
+@using BlazorApp1.Models
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<PageTitle>Gestión de productos</PageTitle>
+
+<h1>Gestión de un producto</h1>
+
+<h3>@(Id.HasValue ? "Editar producto" : "Agregar producto")</h3>
+
+<EditForm Model="@producto" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <InputText id="nombre" class="form-control" @bind-Value="producto.Nombre" />
+    </div>
+    <div class="form-group">
+        <label for="precio">Precio</label>
+        <InputNumber id="precio" class="form-control" @bind-Value="producto.Precio" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-secondary" @onclick="@(async () => Navigation.NavigateTo("/productos"))">Cancelar</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private Producto producto = new Producto();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id.HasValue)
+        {
+            producto = await Http.GetFromJsonAsync<Producto>($"http://localhost:5273/productos/{Id}");
+        }
+    }
+
+    private async Task Guardar()
+    {
+        if (Id.HasValue)
+        {
+            await Http.PutAsJsonAsync($"http://localhost:5273/productos/{Id}", producto);
+        }
+        else
+        {
+            await Http.PostAsJsonAsync("http://localhost:5273/productos", producto);
+        }
+
+        Navigation.NavigateTo("/productos");
+    }
+}
