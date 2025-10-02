@@ -18,5 +18,28 @@ namespace Proyecto1
             unArtista.Discografica = discografica;
             PersistenciaArtistas.GuardarArtista(unArtista);
         }
+
+        public static List<Artista> ObternerArtistas()
+        {
+            List<Artista> listado = new List<Artista>();
+            listado = PersistenciaArtistas.LeerArtistas();
+            // Si esto es null no existe el archivo
+            if (listado.Count > 0 )
+            {
+                return listado;
+            }
+            else
+            {
+                throw new Exception("No hay artistas cargados");
+            }
+        }
+
+        public static void GuardarDisco(Artista unArtista, string nombre, int anioPublicacion, int cantidadCanciones, int duracionTotal, string tipoDisco)
+        {
+            Disco discoNuevo = new Disco(nombre, anioPublicacion, cantidadCanciones, duracionTotal, tipoDisco);
+            unArtista.agregarDisco(discoNuevo);
+            //PersistenciaArtistas.GuardarDisco(discoNuevo);
+        }
+
     }
 }

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Proyecto1.Modelos
 {
-    internal class Disco
+    public class Disco
     {
         // definición de atributos
+        private string _id;
         private string _nombre;
         private int _anioLanzamiento;
         private int _cantidadCanciones;
@@ -27,5 +28,7 @@ namespace Proyecto1.Modelos
         public string Nombre { get { return _nombre; } }
 
         public int AnioLanzamiento { get { return _anioLanzamiento; } }
+
+        public string getID() { return $"{_nombre}_{_anioLanzamiento}"; }
     }
 }

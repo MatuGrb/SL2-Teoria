@@ -4,10 +4,32 @@ namespace Proyecto1
 {
     public partial class FrmArtistas : Form
     {
+
+        private List<Artista> _listaArtistas = new List<Artista>();
+
         public FrmArtistas()
         {
             InitializeComponent();
         }
+
+        private void sincronizarListado()
+        {
+            // Primero, limpiar la lista
+            this.lstArtistas.Items.Clear();
+            try
+            {
+                _listaArtistas = ControladorArtistas.ObternerArtistas();
+                foreach (var artista in _listaArtistas)
+                {
+                    this.lstArtistas.Items.Add(artista);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay artistas cargados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -26,6 +48,22 @@ namespace Proyecto1
                 discografica = cbxDiscografica.SelectedItem.ToString();
             }
             ControladorArtistas.GuardarArtista(nombreCompleto, nombreArtistico, anioInicio, nacionalidad, discografica);
+            sincronizarListado();
+        }
+
+        private void FrmArtistas_Load(object sender, EventArgs e)
+        {
+            sincronizarListado();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.lstArtistas.SelectedItems.Count > 0)
+            {
+                FrmDiscos frmDiscos = new FrmDiscos();
+
+                frmDiscos.ShowDialog();
+            }
         }
     }
 }

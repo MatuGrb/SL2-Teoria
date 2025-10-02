@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace Proyecto1.Modelos
 {
-    internal class Artista
+    public class Artista
     {
         // declaracion de atributos de la clase
+        private string _id;
         private string _nombreCompleto;
         private string _nombreArtistico;
         private int _anioInicio;
         private string _nacionalidad;
         private string _discografica;
+
+        private List<Disco> _listaDiscos = new List<Disco>();
 
         // constructor de la clase
         public Artista(string nombreCompleto, string nombreArtistico)
@@ -65,5 +68,24 @@ namespace Proyecto1.Modelos
         public string NombreCompleto { get { return _nombreCompleto; } }
 
         public string NombreArtistico { get { return _nombreArtistico; } }
+
+        public override string ToString()
+        {
+            return $"{_nombreArtistico} ({_anioInicio})";
+        }
+
+        public void agregarDisco(Disco discoNuevo)
+        {
+            // TODO: agregar control de duplicados
+            _listaDiscos.Add(discoNuevo);
+        }
+
+        public List<Disco> getDiscos()
+        {
+            return _listaDiscos;
+        }
+
+        public string getID() { return $"{_nombreArtistico}_{_anioInicio}"; }
+
     }
 }

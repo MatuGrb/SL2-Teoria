@@ -40,5 +40,31 @@ namespace Proyecto1
                 //MessageBox.Show("Archivo actualizado correctamente.");
             }
         }
+
+        public static List<Artista> LeerArtistas()
+        {
+            string fullPath = Path.Combine(GetPath(), "datos_artistas.txt");
+            if (File.Exists(fullPath))
+            {
+                List<Artista> resultados = new List<Artista>();
+                string[] lineas = File.ReadAllLines(fullPath);
+                foreach (string line in lineas)
+                {
+                    var datos = line.Split('|');
+                    Artista unArtista = new Artista(datos[0], datos[1]);
+                    unArtista.setAnioInicio(int.Parse(datos[2]));
+                    unArtista.Nacionalidad = datos[3];
+                    unArtista.Discografica = datos[4];
+                    resultados.Add(unArtista);
+                }
+                return resultados;
+            }
+            else
+            {
+                // El archivo no existe
+                return null;
+            }
+        }
+
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
+            lstArtistas = new ListBox();
             label8 = new Label();
             btnGuardar = new Button();
             cbxDiscografica = new ComboBox();
@@ -43,16 +43,17 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)nupAnioInicio).BeginInit();
             SuspendLayout();
             // 
-            // listBox1
+            // lstArtistas
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(13, 424);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(577, 84);
-            listBox1.TabIndex = 29;
+            lstArtistas.FormattingEnabled = true;
+            lstArtistas.Location = new Point(13, 424);
+            lstArtistas.Name = "lstArtistas";
+            lstArtistas.Size = new Size(577, 84);
+            lstArtistas.TabIndex = 29;
             // 
             // label8
             // 
@@ -180,12 +181,23 @@
             label1.TabIndex = 15;
             label1.Text = "Escuchify 1.1";
             // 
+            // button1
+            // 
+            button1.Location = new Point(327, 524);
+            button1.Name = "button1";
+            button1.Size = new Size(263, 35);
+            button1.TabIndex = 30;
+            button1.Text = "Cargar un disco al artista";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FrmArtistas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(647, 571);
-            Controls.Add(listBox1);
+            Controls.Add(button1);
+            Controls.Add(lstArtistas);
             Controls.Add(label8);
             Controls.Add(btnGuardar);
             Controls.Add(cbxDiscografica);
@@ -202,6 +214,7 @@
             Controls.Add(label1);
             Name = "FrmArtistas";
             Text = "Gestión de artistas";
+            Load += FrmArtistas_Load;
             ((System.ComponentModel.ISupportInitialize)nupAnioInicio).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -209,7 +222,7 @@
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox lstArtistas;
         private Label label8;
         private Button btnGuardar;
         private ComboBox cbxDiscografica;
@@ -224,5 +237,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Button button1;
     }
 }
