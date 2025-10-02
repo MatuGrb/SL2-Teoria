@@ -21,11 +21,11 @@ namespace Proyecto1
                 nacionalidad = cbxNacionalidad.SelectedItem.ToString();
             }
             string discografica = String.Empty;
-            if (cbxDiscografica.SelectedText.ToString() != String.Empty)
+            if (cbxDiscografica.SelectedItem.ToString() != String.Empty)
             {
                 discografica = cbxDiscografica.SelectedItem.ToString();
             }
-            
+            ControladorArtistas.GuardarArtista(nombreCompleto, nombreArtistico, anioInicio, nacionalidad, discografica);
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using Proyecto1.PersistenciaArtistas;
 
 namespace Proyecto1
 {
-    internal static class Controladorartistas
+    internal static class ControladorArtistas
     {
         public static void GuardarArtista(string nombreCompleto, string nombreArtistico, int anioInicio, string nacionalidad, string discografica)
         {
@@ -15,6 +16,7 @@ namespace Proyecto1
             unArtista.setAnioInicio(anioInicio);
             unArtista.Nacionalidad = nacionalidad;
             unArtista.Discografica = discografica;
+            PersistenciaArtistas.GuardarArtista(unArtista);
         }
     }
 }
