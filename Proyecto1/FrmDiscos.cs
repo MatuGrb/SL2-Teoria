@@ -39,7 +39,7 @@ namespace Proyecto1
             int cantidadCanciones = (int) nupCantidadCanciones.Value;
             int duracionTotal = (int) nupDuracionTotal.Value;
             string tipoDisco = cbxTipoDisco.SelectedText;
-
+            ControladorArtistas.GuardarDisco(_artistaCargado, nombre, anioLanzamiento, cantidadCanciones, duracionTotal, tipoDisco);
     }
     }
 }

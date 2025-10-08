@@ -38,7 +38,7 @@ namespace Proyecto1
         {
             Disco discoNuevo = new Disco(nombre, anioPublicacion, cantidadCanciones, duracionTotal, tipoDisco);
             unArtista.agregarDisco(discoNuevo);
-            //PersistenciaArtistas.GuardarDisco(discoNuevo);
+            PersistenciaArtistas.GuardarDisco(discoNuevo, unArtista.getID());
         }
 
     }

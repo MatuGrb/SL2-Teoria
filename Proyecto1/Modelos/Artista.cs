@@ -71,7 +71,7 @@ namespace Proyecto1.Modelos
 
         public override string ToString()
         {
-            return $"{_nombreArtistico} ({_anioInicio})";
+            return $"{_nombreArtistico} ({_anioInicio}) - Discos cargados: {CantidadDiscos}";
         }
 
         public void agregarDisco(Disco discoNuevo)
@@ -93,6 +93,11 @@ namespace Proyecto1.Modelos
         public void setID(int id)
         {
             _id = id;
+        }
+
+        public int CantidadDiscos
+        {
+            get { return _listaDiscos.Count; }
         }
 
     }

@@ -38,5 +38,14 @@ namespace Proyecto1.Modelos
         {
             _id = id;
         }
+
+        public override string ToString()
+        {
+            return $"Nombre: {_nombre}, Año de Lanzamiento: {_anioLanzamiento}, Cantidad de Canciones: {_cantidadCanciones}, Duración Total: {_duracionTotal} minutos, Tipo de Disco: {_tipoDisco}";
+        }
+
+        public int CantidadCanciones { get { return _cantidadCanciones; } }
+        public int DuracionTotal { get { return _duracionTotal; } } 
+        public string TipoDisco { get { return _tipoDisco; } }
     }
 }

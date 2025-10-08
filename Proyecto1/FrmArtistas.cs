@@ -61,7 +61,7 @@ namespace Proyecto1
             if (this.lstArtistas.SelectedItems.Count > 0)
             {
                 FrmDiscos frmDiscos = new FrmDiscos();
-
+                frmDiscos.setArtista((Artista) lstArtistas.SelectedItem);
                 frmDiscos.ShowDialog();
             }
         }
