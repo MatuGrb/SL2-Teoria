@@ -9,7 +9,7 @@ namespace Proyecto1.Modelos
     public class Artista
     {
         // declaracion de atributos de la clase
-        private string _id;
+        private int _id = 0;
         private string _nombreCompleto;
         private string _nombreArtistico;
         private int _anioInicio;
@@ -85,7 +85,15 @@ namespace Proyecto1.Modelos
             return _listaDiscos;
         }
 
-        public string getID() { return $"{_nombreArtistico}_{_anioInicio}"; }
+        public int getID()
+        {
+            return _id;
+        }
+
+        public void setID(int id)
+        {
+            _id = id;
+        }
 
     }
 }

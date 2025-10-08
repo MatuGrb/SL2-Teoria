@@ -9,7 +9,7 @@ namespace Proyecto1.Modelos
     public class Disco
     {
         // definición de atributos
-        private string _id;
+        private int _id = 0;
         private string _nombre;
         private int _anioLanzamiento;
         private int _cantidadCanciones;
@@ -29,6 +29,14 @@ namespace Proyecto1.Modelos
 
         public int AnioLanzamiento { get { return _anioLanzamiento; } }
 
-        public string getID() { return $"{_nombre}_{_anioLanzamiento}"; }
+        public int getID()
+        {
+            return _id;
+        }
+
+        public void setID(int id)
+        {
+            _id = id;
+        }
     }
 }
