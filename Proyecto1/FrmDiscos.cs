@@ -24,7 +24,7 @@ namespace Proyecto1
         public void setArtista(Artista unArtista)
         {
             _artistaCargado = unArtista;
-
+            txtNombreArtista.Text = _artistaCargado.NombreArtistico;
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -12,13 +12,32 @@ namespace Proyecto1
             InitializeComponent();
         }
 
-        private void sincronizarListado()
+        private void cargarListado()
         {
             // Primero, limpiar la lista
             this.lstArtistas.Items.Clear();
             try
             {
                 _listaArtistas = ControladorArtistas.ObternerArtistas();
+                foreach (var artista in _listaArtistas)
+                {
+                    this.lstArtistas.Items.Add(artista);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay artistas cargados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void sincronizarListado()
+        {
+            // Primero, limpiar la lista
+            this.lstArtistas.Items.Clear();
+            try
+            {
+                // Trae directo de la memoria
+                _listaArtistas = ControladorArtistas.getListaArtistas();
                 foreach (var artista in _listaArtistas)
                 {
                     this.lstArtistas.Items.Add(artista);
@@ -53,7 +72,7 @@ namespace Proyecto1
 
         private void FrmArtistas_Load(object sender, EventArgs e)
         {
-            sincronizarListado();
+            cargarListado();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -63,6 +82,7 @@ namespace Proyecto1
                 FrmDiscos frmDiscos = new FrmDiscos();
                 frmDiscos.setArtista((Artista) lstArtistas.SelectedItem);
                 frmDiscos.ShowDialog();
+                sincronizarListado();
             }
         }
     }

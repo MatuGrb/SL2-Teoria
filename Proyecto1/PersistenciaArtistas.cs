@@ -11,30 +11,6 @@ namespace Proyecto1
 {
     internal static class PersistenciaArtistas
     {
-        private static int _ultimoIdArtista = 0;
-        private static int _ultimoIdDisco = 0;
-
-        private static void UltimoIdArtista()
-        {
-            var artistas = LeerArtistas();
-            if (artistas.Any())
-            {
-                // Encuentra el ID más grande entre los artistas cargados
-                _ultimoIdArtista = artistas.Max(a => a.getID());
-            }
-            else
-            {
-                _ultimoIdArtista = 0;
-            }
-        }
-
-        private static int GenerarIdArtista()
-        {
-            // Incrementa el último ID y lo devuelve para el nuevo artista
-            _ultimoIdArtista++;
-            return _ultimoIdArtista;
-        }
-
         private static string GetPath()
         {
             return AppContext.BaseDirectory;
@@ -43,8 +19,8 @@ namespace Proyecto1
         public static void GuardarArtista(Artista unArtista)
         {
             string fullPath = Path.Combine(GetPath(), "datos_artistas.txt");
-            UltimoIdArtista();
-            unArtista.setID(GenerarIdArtista());
+            // UltimoIdArtista();
+            // unArtista.setID(GenerarIdArtista());
             if (!File.Exists(fullPath))
             {
                 // El archivo no existe
@@ -96,32 +72,11 @@ namespace Proyecto1
             }
         }
 
-        private static void UltimoIdDisco()
-        {
-            var discos = LeerDiscos();
-            if (discos.Any())
-            {
-                // Encuentra el ID más grande entre los discos cargados
-                _ultimoIdDisco = discos.Max(d => d.getID());
-            }
-            else
-            {
-                _ultimoIdDisco = 0;
-            }
-        }
-
-        private static int GenerarIdDisco()
-        {
-            // Incrementa el último ID y lo devuelve para el disco nuevo
-            _ultimoIdDisco++;
-            return _ultimoIdDisco;
-        }
-
         public static void GuardarDisco(Disco unDisco, int idArtista)
         {
             string fullPath = Path.Combine(GetPath(), "datos_discos.txt");
-            UltimoIdDisco();
-            unDisco.setID(GenerarIdDisco());
+            // UltimoIdDisco();
+            // unDisco.setID(GenerarIdDisco());
             if (!File.Exists(fullPath))
             {
                 // archivo nuevo
