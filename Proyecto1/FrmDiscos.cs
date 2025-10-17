@@ -1,4 +1,5 @@
 ﻿using Proyecto1.Modelos;
+using Proyecto1.Controladores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace Proyecto1
             int cantidadCanciones = (int) nupCantidadCanciones.Value;
             int duracionTotal = (int) nupDuracionTotal.Value;
             string tipoDisco = cbxTipoDisco.SelectedText;
-            ControladorArtistas.GuardarDisco(_artistaCargado, nombre, anioLanzamiento, cantidadCanciones, duracionTotal, tipoDisco);
+            ControladorDiscos.GuardarDisco(_artistaCargado, nombre, anioLanzamiento, cantidadCanciones, duracionTotal, tipoDisco);
     }
     }
 }
