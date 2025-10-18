@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Proyecto1.Modelos {
+    internal class Cancion {
+        // definición de atributos
+        private int _id = 0;
+        private string _nombreCancion;
+        private int _anioLanzamientoCancion;
+        private int _duracionCancion;
+        private Disco _discoRelacionado; //disco al que está relacionado
+
+        public Cancion (string nombre, int cantidadCanciones, int duracion, Disco discoRelacionado) {
+            _nombreCancion = nombre;
+            _duracionCancion = duracion;
+            _discoRelacionado = discoRelacionado;
+        }
+
+        public string Nombre { get { return _nombreCancion; } }
+
+        public int getID () {
+            return _id;
+        }
+
+        public void setID (int id) {
+            _id = id;
+        }
+
+        public override string ToString () {
+            return $"Nombre: {_nombreCancion}, Duración: {_duracionCancion} segundos, disco asociado: {_discoRelacionado}";
+        }
+
+        public int DuracionTotal { get { return _duracionCancion; } }
+        public Disco DiscoRelacionado { get { return _discoRelacionado; } }
+    }
+}
