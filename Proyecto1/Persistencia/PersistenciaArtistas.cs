@@ -109,7 +109,5 @@ namespace Proyecto1.Persistencia
                 return resultados;
             }
         }
-
-        
     }
 }

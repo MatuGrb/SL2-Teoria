@@ -21,6 +21,7 @@ namespace Proyecto1.Modelos {
         }
 
         public string Nombre { get { return _nombreCancion; } }
+        public int AnioLanzamiento { get { return _anioLanzamientoCancion; } }
 
         public int getID () {
             return _id;
@@ -34,7 +35,7 @@ namespace Proyecto1.Modelos {
             return $"Nombre: {_nombreCancion}, Duración: {_duracionCancion} segundos, disco asociado: {_discoRelacionado}";
         }
 
-        public int DuracionTotal { get { return _duracionCancion; } }
+        public int DuracionSeg { get { return _duracionCancion; } }
         public Disco DiscoRelacionado { get { return _discoRelacionado; } }
     }
 }
