@@ -1,4 +1,5 @@
-﻿using Proyecto1.Modelos;
+﻿using Proyecto1.Controladores;
+using Proyecto1.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,12 @@ using System.Windows.Forms;
 
 namespace Proyecto1 {
     public partial class FrmCanciones : Form {
+        private List<Cancion> _listaCancion = new List<Cancion>();
         private Disco _DiscoAsociado;
-        public FrmCanciones () {
+        Form formularioAnterior;
+        public FrmCanciones (Form formularioAnterior) {
             InitializeComponent();
+            this.formularioAnterior = formularioAnterior;
         }
 
         public void setDisco (Disco unDisco) {
@@ -21,9 +25,46 @@ namespace Proyecto1 {
                 _DiscoAsociado = unDisco;
                 txtNombreCancion.Text = _DiscoAsociado.Nombre;
             } catch (Exception ex) {
-                throw new Exception("No hay disco asociado");
+                MessageBox.Show("No hay disco asociado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void btnVolver_Click (object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void btnGuardar_Click (object sender, EventArgs e) {
+            try {
+                // se toman los datos cargados en la UI
+                string nombreCancion = txtNombreCancion.Text;
+                int anioInicio = (int)nupAnioPublicacion.Value;
+                int duracion = (int)nupDuracionSeg.Value;
+                ControladorCanciones.GuardarCancion(nombreCancion, anioInicio, duracion, _DiscoAsociado);
+                cargarListado();
+                limpiarDatosEntrada();
+            }catch {
+                MessageBox.Show("Ocurrió un error al guardar la cancion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+        private void cargarListado () {
+            // Primero, limpiar la lista
+            this.lstCanciones.Items.Clear();
+            try {
+                _listaCancion = ControladorCanciones.ObtenerCanciones();
+                foreach (var cancion in _listaCancion) {
+                    this.lstCanciones.Items.Add(cancion);
+                }
+            } catch (Exception ex) {
+                MessageBox.Show("No hay canciones cargadas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void limpiarDatosEntrada () {
+            txtNombreCancion.Clear();
+            nupAnioPublicacion.Value = 1900;
+            cbxNacionalidad.SelectedIndex = -1;
+            cbxDiscografica.SelectedIndex = -1;
         }
     }
 }

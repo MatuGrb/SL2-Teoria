@@ -44,7 +44,7 @@
             label7 = new Label();
             btnVolver = new Button();
             btnCargarCancion = new Button();
-            lstArtistas = new ListBox();
+            lstDiscos = new ListBox();
             ((System.ComponentModel.ISupportInitialize)nupAnioPublicacion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupCantidadCanciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupDuracionTotal).BeginInit();
@@ -62,7 +62,6 @@
             // 
             // cbxTipoDisco
             // 
-            cbxTipoDisco.Enabled = false;
             cbxTipoDisco.FormattingEnabled = true;
             cbxTipoDisco.Items.AddRange(new object[] { "En vivo", "Estudio", "Antología", "Otros" });
             cbxTipoDisco.Location = new Point(254, 316);
@@ -208,23 +207,24 @@
             btnCargarCancion.TabIndex = 50;
             btnCargarCancion.Text = "Cargar Cancion";
             btnCargarCancion.UseVisualStyleBackColor = true;
+            btnCargarCancion.Click += btnCargarCancion_Click;
             // 
-            // lstArtistas
+            // lstDiscos
             // 
-            lstArtistas.FormattingEnabled = true;
-            lstArtistas.ItemHeight = 19;
-            lstArtistas.Location = new Point(57, 422);
-            lstArtistas.Margin = new Padding(3, 2, 3, 2);
-            lstArtistas.Name = "lstArtistas";
-            lstArtistas.Size = new Size(505, 118);
-            lstArtistas.TabIndex = 51;
+            lstDiscos.FormattingEnabled = true;
+            lstDiscos.ItemHeight = 19;
+            lstDiscos.Location = new Point(57, 422);
+            lstDiscos.Margin = new Padding(3, 2, 3, 2);
+            lstDiscos.Name = "lstDiscos";
+            lstDiscos.Size = new Size(505, 118);
+            lstDiscos.TabIndex = 51;
             // 
             // FrmDiscos
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(628, 551);
-            Controls.Add(lstArtistas);
+            Controls.Add(lstDiscos);
             Controls.Add(btnCargarCancion);
             Controls.Add(btnVolver);
             Controls.Add(nupDuracionTotal);
@@ -272,6 +272,6 @@
         private Label label7;
         private Button btnVolver;
         private Button btnCargarCancion;
-        private ListBox lstArtistas;
+        private ListBox lstDiscos;
     }
 }

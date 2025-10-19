@@ -13,8 +13,9 @@ namespace Proyecto1.Modelos {
         private int _duracionCancion;
         private Disco _discoRelacionado; //disco al que está relacionado
 
-        public Cancion (string nombre, int cantidadCanciones, int duracion, Disco discoRelacionado) {
-            _nombreCancion = nombre;
+        public Cancion (string nombre, int anioLanzamiento, int duracion, Disco discoRelacionado) {
+            _nombreCancion = nombre; 
+            _anioLanzamientoCancion = anioLanzamiento;
             _duracionCancion = duracion;
             _discoRelacionado = discoRelacionado;
         }

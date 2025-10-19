@@ -36,6 +36,7 @@
             label1 = new Label();
             btnVolver = new Button();
             txtDisco = new TextBox();
+            lstCanciones = new ListBox();
             ((System.ComponentModel.ISupportInitialize)nupDuracionSeg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupAnioPublicacion).BeginInit();
             SuspendLayout();
@@ -61,12 +62,13 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(422, 270);
+            btnGuardar.Location = new Point(422, 246);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(169, 35);
             btnGuardar.TabIndex = 59;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // nupAnioPublicacion
             // 
@@ -143,12 +145,13 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(247, 270);
+            btnVolver.Location = new Point(247, 246);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(169, 35);
             btnVolver.TabIndex = 65;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // txtDisco
             // 
@@ -158,11 +161,22 @@
             txtDisco.Size = new Size(336, 23);
             txtDisco.TabIndex = 66;
             // 
+            // lstCanciones
+            // 
+            lstCanciones.FormattingEnabled = true;
+            lstCanciones.ItemHeight = 15;
+            lstCanciones.Location = new Point(71, 297);
+            lstCanciones.Margin = new Padding(3, 2, 3, 2);
+            lstCanciones.Name = "lstCanciones";
+            lstCanciones.Size = new Size(505, 64);
+            lstCanciones.TabIndex = 67;
+            // 
             // FrmCanciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(616, 322);
+            ClientSize = new Size(616, 374);
+            Controls.Add(lstCanciones);
             Controls.Add(txtDisco);
             Controls.Add(btnVolver);
             Controls.Add(label1);
@@ -199,5 +213,6 @@
         private Label label1;
         private Button btnVolver;
         private TextBox txtDisco;
+        private ListBox lstCanciones;
     }
 }

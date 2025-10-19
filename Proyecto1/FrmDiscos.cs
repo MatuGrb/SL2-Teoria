@@ -47,5 +47,9 @@ namespace Proyecto1
         private void btnVolver_Click (object sender, EventArgs e) {
             this.Close();
         }
+
+        private void btnCargarCancion_Click (object sender, EventArgs e) {
+            
+        }
     }
 }
