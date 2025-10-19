@@ -13,11 +13,13 @@ using System.Windows.Forms;
 namespace Proyecto1
 {
     public partial class FrmDiscos : Form {
+        Form formularioAnterior;
 
         private Artista _artistaCargado;
 
-        public FrmDiscos () {
+        public FrmDiscos (Form anterior) {
             InitializeComponent();
+            formularioAnterior = anterior;
         }
 
         public void setArtista (Artista unArtista) {
@@ -40,6 +42,10 @@ namespace Proyecto1
 
         private void FrmDiscos_Load (object sender, EventArgs e) {
 
+        }
+
+        private void btnVolver_Click (object sender, EventArgs e) {
+            this.Close();
         }
     }
 }
