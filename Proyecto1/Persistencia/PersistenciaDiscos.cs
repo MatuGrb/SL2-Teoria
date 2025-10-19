@@ -50,7 +50,7 @@ namespace Proyecto1.Persistencia
                 foreach (string line in lineas)
                 {
                     var datos = line.Split('|');
-                    // string datos = $"{unDisco.getID()}|{unDisco.Nombre}|{unDisco.AnioLanzamiento}|{unDisco.CantidadCanciones}|{unDisco.DuracionTotal}|{unDisco.TipoDisco}|{idArtista}";
+                    //string datos = $"{unDisco.getID()}|{unDisco.Nombre}|{unDisco.AnioLanzamiento}|{unDisco.CantidadCanciones}|{unDisco.DuracionTotal}|{unDisco.TipoDisco}|{idArtista}";
                     Disco unDisco = new Disco(datos[1], int.Parse(datos[2]), int.Parse(datos[3]), int.Parse(datos[4]), datos[5]);
                     unDisco.setID(int.Parse(datos[0]));
                     int idArtista = int.Parse(datos[6]);

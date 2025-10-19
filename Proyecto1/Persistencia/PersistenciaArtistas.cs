@@ -24,39 +24,32 @@ namespace Proyecto1.Persistencia
             string fullPath = Path.Combine(GetPath(), "datos_artistas.txt");
             string ultimaLinea = null;
             //string ultimaLinea = File.ReadLines(fullPath).LastOrDefault();
-            try
-            {
+            try{
                 // Intenta leer la última línea del archivo.
                 // File.ReadLines es eficiente ya que no carga todo el archivo en memoria.
                 ultimaLinea = File.ReadLines(fullPath).LastOrDefault();
             }
-            catch (FileNotFoundException ex)
-            {
+            catch (FileNotFoundException ex){
                 // Maneja el caso en que la ruta del archivo es inválida o el archivo no existe.
                 Console.WriteLine($"Error: El archivo no fue encontrado en '{fullPath}'. Detalles: {ex.Message}");
                 // Aquí puedes registrar el error, notificar al usuario, o establecer un valor por defecto.
             }
-            catch (System.Security.SecurityException ex)
-            {
+            catch (System.Security.SecurityException ex){
                 // Maneja el caso en que la aplicación no tiene los permisos necesarios.
                 Console.WriteLine($"Error de Permisos: No se pudo acceder al archivo. Detalles: {ex.Message}");
             }
-            catch (IOException ex)
-            {
+            catch (IOException ex){
                 // Captura otros errores de I/O, como problemas con el disco o el nombre de ruta demasiado largo.
                 Console.WriteLine($"Error de I/O: Ocurrió un error al leer el archivo. Detalles: {ex.Message}");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 // Captura cualquier otra excepción no esperada.
                 Console.WriteLine($"Error Inesperado: {ex.Message}");
             }
-            if (ultimaLinea == null)
-            {
+            if (ultimaLinea == null){
                 _ultimoID = 0;
             }
-            else
-            {
+            else{
                 var datos = ultimaLinea.Split('|');
                 _ultimoID = int.Parse(datos[0]);
             }

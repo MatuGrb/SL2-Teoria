@@ -15,9 +15,9 @@ namespace Proyecto1 {
         private List<Cancion> _listaCancion = new List<Cancion>();
         private Disco _DiscoAsociado;
         Form formularioAnterior;
-        public FrmCanciones (Form formularioAnterior) {
+        public FrmCanciones (Form anterior) {
             InitializeComponent();
-            this.formularioAnterior = formularioAnterior;
+            this.formularioAnterior = anterior;
         }
 
         public void setDisco (Disco unDisco) {
@@ -63,8 +63,7 @@ namespace Proyecto1 {
         private void limpiarDatosEntrada () {
             txtNombreCancion.Clear();
             nupAnioPublicacion.Value = 1900;
-            cbxNacionalidad.SelectedIndex = -1;
-            cbxDiscografica.SelectedIndex = -1;
+            nupDuracionSeg.Value = 1500;
         }
     }
 }
