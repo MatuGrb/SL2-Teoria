@@ -66,7 +66,7 @@
             cbxTipoDisco.Items.AddRange(new object[] { "En vivo", "Estudio", "Antología", "Otros" });
             cbxTipoDisco.Location = new Point(254, 316);
             cbxTipoDisco.Name = "cbxTipoDisco";
-            cbxTipoDisco.Size = new Size(336, 27);
+            cbxTipoDisco.Size = new Size(336, 33);
             cbxTipoDisco.TabIndex = 40;
             // 
             // nupAnioPublicacion
@@ -75,7 +75,7 @@
             nupAnioPublicacion.Maximum = new decimal(new int[] { 2025, 0, 0, 0 });
             nupAnioPublicacion.Minimum = new decimal(new int[] { 1900, 0, 0, 0 });
             nupAnioPublicacion.Name = "nupAnioPublicacion";
-            nupAnioPublicacion.Size = new Size(138, 27);
+            nupAnioPublicacion.Size = new Size(138, 31);
             nupAnioPublicacion.TabIndex = 39;
             nupAnioPublicacion.Value = new decimal(new int[] { 1900, 0, 0, 0 });
             // 
@@ -83,7 +83,7 @@
             // 
             txtNombreDisco.Location = new Point(254, 149);
             txtNombreDisco.Name = "txtNombreDisco";
-            txtNombreDisco.Size = new Size(336, 27);
+            txtNombreDisco.Size = new Size(336, 31);
             txtNombreDisco.TabIndex = 38;
             // 
             // txtNombreArtista
@@ -91,7 +91,7 @@
             txtNombreArtista.Enabled = false;
             txtNombreArtista.Location = new Point(254, 104);
             txtNombreArtista.Name = "txtNombreArtista";
-            txtNombreArtista.Size = new Size(336, 27);
+            txtNombreArtista.Size = new Size(336, 31);
             txtNombreArtista.TabIndex = 37;
             // 
             // label6
@@ -99,7 +99,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(70, 319);
             label6.Name = "label6";
-            label6.Size = new Size(102, 20);
+            label6.Size = new Size(123, 25);
             label6.TabIndex = 35;
             label6.Text = "Tipo de disco:";
             // 
@@ -108,7 +108,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(70, 197);
             label5.Name = "label5";
-            label5.Size = new Size(141, 20);
+            label5.Size = new Size(169, 25);
             label5.TabIndex = 34;
             label5.Text = "Año de publicación:";
             // 
@@ -117,7 +117,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(70, 152);
             label4.Name = "label4";
-            label4.Size = new Size(67, 20);
+            label4.Size = new Size(82, 25);
             label4.TabIndex = 33;
             label4.Text = "Nombre:";
             // 
@@ -126,7 +126,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(70, 107);
             label3.Name = "label3";
-            label3.Size = new Size(104, 20);
+            label3.Size = new Size(124, 25);
             label3.TabIndex = 32;
             label3.Text = "Autor (artista):";
             // 
@@ -135,10 +135,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(13, 54);
             label2.Name = "label2";
-            label2.Size = new Size(181, 20);
+            label2.Size = new Size(219, 25);
             label2.TabIndex = 31;
             label2.Text = "Carga de datos de Discos:";
-            label2.Click += label2_Click;
             // 
             // label9
             // 
@@ -147,7 +146,7 @@
             label9.Location = new Point(12, 17);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(108, 21);
+            label9.Size = new Size(136, 28);
             label9.TabIndex = 30;
             label9.Text = "Escuchify 1.1";
             // 
@@ -157,16 +156,16 @@
             nupCantidadCanciones.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             nupCantidadCanciones.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupCantidadCanciones.Name = "nupCantidadCanciones";
-            nupCantidadCanciones.Size = new Size(138, 27);
+            nupCantidadCanciones.Size = new Size(138, 31);
             nupCantidadCanciones.TabIndex = 46;
-            nupCantidadCanciones.Value = new decimal(new int[] { 20, 0, 0, 0 });
+            nupCantidadCanciones.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(70, 237);
             label1.Name = "label1";
-            label1.Size = new Size(141, 20);
+            label1.Size = new Size(169, 25);
             label1.TabIndex = 45;
             label1.Text = "Cantidad canciones:";
             // 
@@ -174,18 +173,18 @@
             // 
             nupDuracionTotal.Location = new Point(254, 279);
             nupDuracionTotal.Maximum = new decimal(new int[] { 5400, 0, 0, 0 });
-            nupDuracionTotal.Minimum = new decimal(new int[] { 600, 0, 0, 0 });
+            nupDuracionTotal.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupDuracionTotal.Name = "nupDuracionTotal";
-            nupDuracionTotal.Size = new Size(138, 27);
+            nupDuracionTotal.Size = new Size(138, 31);
             nupDuracionTotal.TabIndex = 48;
-            nupDuracionTotal.Value = new decimal(new int[] { 1500, 0, 0, 0 });
+            nupDuracionTotal.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Location = new Point(70, 281);
             label7.Name = "label7";
-            label7.Size = new Size(107, 20);
+            label7.Size = new Size(128, 25);
             label7.TabIndex = 47;
             label7.Text = "Duración total:";
             // 
@@ -212,18 +211,18 @@
             // lstDiscos
             // 
             lstDiscos.FormattingEnabled = true;
-            lstDiscos.ItemHeight = 19;
-            lstDiscos.Location = new Point(57, 422);
+            lstDiscos.ItemHeight = 25;
+            lstDiscos.Location = new Point(12, 420);
             lstDiscos.Margin = new Padding(3, 2, 3, 2);
             lstDiscos.Name = "lstDiscos";
-            lstDiscos.Size = new Size(505, 118);
+            lstDiscos.Size = new Size(578, 104);
             lstDiscos.TabIndex = 51;
             // 
             // FrmDiscos
             // 
-            AutoScaleDimensions = new SizeF(8F, 19F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(628, 551);
+            ClientSize = new Size(605, 535);
             Controls.Add(lstDiscos);
             Controls.Add(btnCargarCancion);
             Controls.Add(btnVolver);

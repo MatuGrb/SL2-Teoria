@@ -12,13 +12,6 @@ namespace Proyecto1.Controladores
 {
     internal static class ControladorArtistas
     {
-        //static List<Artista> _listaArtistas = new List<Artista>();
-
-        //public static List<Artista> getListaArtistas()
-        //{
-        //    return _listaArtistas;
-        //}
-
         public static void GuardarArtista(string nombreCompleto, string nombreArtistico, int anioInicio, string nacionalidad, string discografica)
         {
             Artista unArtista = new(nombreCompleto, nombreArtistico);

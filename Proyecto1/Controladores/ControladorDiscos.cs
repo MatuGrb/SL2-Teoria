@@ -10,34 +10,24 @@ namespace Proyecto1.Controladores
 {
     internal class ControladorDiscos
     {
-        //static private int getMaxIDDiscos()
-        //{
-        //    int maxIDDiscos = -1;
-        //    foreach (Artista unArtista in _listaArtistas)
-        //    {
-        //        if (!unArtista.getDiscos().Any())
-        //        {
-        //            continue;
-        //        }
-        //        else
-        //        {
-        //            if (unArtista.getDiscos().Max(d => d.getID()) > maxIDDiscos)
-        //            {
-        //                maxIDDiscos = unArtista.getDiscos().Max(d => d.getID());
-        //            }
-        //        }
-        //    }
-        //    return maxIDDiscos;
-        //}
-
-        public static void GuardarDisco(Artista unArtista, string nombre, int anioPublicacion, int cantidadCanciones, int duracionTotal, string tipoDisco)
+        public static bool GuardarDisco(Artista unArtista, string nombre, int anioPublicacion, int cantidadCanciones, int duracionTotal, string tipoDisco)
         {
             Disco discoNuevo = new Disco(nombre, anioPublicacion, cantidadCanciones, duracionTotal, tipoDisco);
-            //int idDisco = getMaxIDDiscos() + 1;
-            //discoNuevo.setID(idDisco);
             unArtista.agregarDisco(discoNuevo);
-            PersistenciaDiscos.GuardarDisco(discoNuevo, unArtista.getID());
+            return (PersistenciaDiscos.GuardarDisco(discoNuevo, unArtista.getID()));
         }
-
+        public static void InicializarUltimoID () {
+            PersistenciaDiscos.ObtenerUltimoID();
+        }
+        public static List<Disco> ObtenerDiscos (int idArtista) {
+            List<Disco> listado = new List<Disco>();
+            listado = PersistenciaDiscos.LeerDiscosDeArtista(idArtista);
+            // Si esto es null no existe el archivo
+            if (listado.Count > 0) {
+                return listado;
+            } else {
+                throw new Exception("No hay discos cargados");
+            }
+        }
     }
 }

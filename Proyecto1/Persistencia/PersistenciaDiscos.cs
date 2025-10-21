@@ -17,28 +17,21 @@ namespace Proyecto1.Persistencia
         }
 
         public static void ObtenerUltimoID () {
-            string fullPath = Path.Combine(GetPath(), "datos_artistas.txt");
-            string ultimaLinea = null;
-            //string ultimaLinea = File.ReadLines(fullPath).LastOrDefault();
+            string fullPath = Path.Combine(GetPath(), "datos_discos.txt");
+            string ultimaLinea = string.Empty; // Inicialización para evitar CS0165
             try {
-                // Intenta leer la última línea del archivo.
-                // File.ReadLines es eficiente ya que no carga todo el archivo en memoria.
-                ultimaLinea = File.ReadLines(fullPath).LastOrDefault();
+                string? ultimaLineaNullable = File.ReadLines(fullPath).LastOrDefault();
+                ultimaLinea = ultimaLineaNullable ?? string.Empty;
             } catch (FileNotFoundException ex) {
-                // Maneja el caso en que la ruta del archivo es inválida o el archivo no existe.
                 Console.WriteLine($"Error: El archivo no fue encontrado en '{fullPath}'. Detalles: {ex.Message}");
-                // Aquí puedes registrar el error, notificar al usuario, o establecer un valor por defecto.
             } catch (System.Security.SecurityException ex) {
-                // Maneja el caso en que la aplicación no tiene los permisos necesarios.
                 Console.WriteLine($"Error de Permisos: No se pudo acceder al archivo. Detalles: {ex.Message}");
             } catch (IOException ex) {
-                // Captura otros errores de I/O, como problemas con el disco o el nombre de ruta demasiado largo.
                 Console.WriteLine($"Error de I/O: Ocurrió un error al leer el archivo. Detalles: {ex.Message}");
             } catch (Exception ex) {
-                // Captura cualquier otra excepción no esperada.
                 Console.WriteLine($"Error Inesperado: {ex.Message}");
             }
-            if (ultimaLinea == null) {
+            if (string.IsNullOrEmpty(ultimaLinea)) {
                 _ultimoID = 0;
             } else {
                 var datos = ultimaLinea.Split('|');
@@ -46,12 +39,10 @@ namespace Proyecto1.Persistencia
             }
         }
 
-        public static void GuardarDisco(Disco unDisco, int idArtista)
+        public static bool GuardarDisco(Disco unDisco, int idArtista)
         {
             try {
                 string fullPath = Path.Combine(GetPath(), "datos_discos.txt");
-                // UltimoIdDisco();
-                // unDisco.setID(GenerarIdDisco());
                 unDisco.setID(_ultimoID + 1);
                 if (!File.Exists(fullPath)) {
                     // El archivo no existe
@@ -59,7 +50,7 @@ namespace Proyecto1.Persistencia
                         string datos = $"{unDisco.getID()}|{unDisco.Nombre}|{unDisco.AnioLanzamiento}|{unDisco.CantidadCanciones}|{unDisco.DuracionTotal}|{unDisco.TipoDisco}|{idArtista}";
                         outputFile.WriteLine(datos);
                     }
-                    MessageBox.Show("Archivo creado y datos guardados correctamente.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 } else {
                     // El archivo ya existe, agregamos el mismo contenido
                     using (StreamWriter outputFile = new StreamWriter(fullPath, true)) {
@@ -67,12 +58,11 @@ namespace Proyecto1.Persistencia
                         string datos = $"{unDisco.getID()}|{unDisco.Nombre}|{unDisco.AnioLanzamiento}|{unDisco.CantidadCanciones}|{unDisco.DuracionTotal}|{unDisco.TipoDisco}|{idArtista}";
                         outputFile.WriteLine(datos);
                     }
-                    MessageBox.Show("Archivo actualizado correctamente.", "Informacion",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                 }
-            } catch {
-                throw new Exception("Error al guardar el disco.");
+            } catch (Exception e){
+                throw new Exception("Error al guardar el disco:",e);
             }
-            
         }
 
         public static List<Disco> LeerDiscosDeArtista (int idArtistaBuscado) {
@@ -97,7 +87,6 @@ namespace Proyecto1.Persistencia
                     }
                 }
             }
-
             // Devolvemos la lista de resultados (estará vacía si no se encontró el archivo o no había discos)
             return resultados;
         }
