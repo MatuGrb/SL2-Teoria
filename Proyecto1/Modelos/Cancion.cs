@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Proyecto1.Modelos {
-    internal class Cancion {
+    public class Cancion {
         // definición de atributos
         private int _id = 0;
         private string _nombreCancion;
         private int _anioLanzamientoCancion;
         private int _duracionCancion;
+
         private Disco _discoRelacionado; //disco al que está relacionado
 
         public Cancion (string nombre, int anioLanzamiento, int duracion, Disco discoRelacionado) {

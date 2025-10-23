@@ -16,11 +16,12 @@ namespace Proyecto1.Modelos
         private int _duracionTotal;
         private string _tipoDisco; //estudio, en vivo, antología, etc
 
-        public Disco(string nombre, int anioLanzamiento, int cantidadCanciones, int duracionTotal, string tipoDisco)
+        private List<Cancion> _listaCanciones = new List<Cancion>();
+
+        public Disco(string nombre, int anioLanzamiento, int duracionTotal, string tipoDisco)
         {
             _nombre = nombre;
             _anioLanzamiento = anioLanzamiento;
-            _cantidadCanciones = cantidadCanciones;
             _duracionTotal = duracionTotal;
             _tipoDisco = tipoDisco;
         }
@@ -28,6 +29,10 @@ namespace Proyecto1.Modelos
         public string Nombre { get { return _nombre; } }
 
         public int AnioLanzamiento { get { return _anioLanzamiento; } }
+
+        public void AgregarCancion (Cancion unaCancion) {
+            _listaCanciones.Add(unaCancion);
+        }
 
         public int getID()
         {
@@ -47,5 +52,9 @@ namespace Proyecto1.Modelos
         public int CantidadCanciones { get { return _cantidadCanciones; } }
         public int DuracionTotal { get { return _duracionTotal; } } 
         public string TipoDisco { get { return _tipoDisco; } }
+
+        public int CantidadCancions {
+            get { return _listaCanciones.Count; }
+        }
     }
 }
