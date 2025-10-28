@@ -66,29 +66,34 @@ namespace Proyecto1.Persistencia
         }
 
         public static List<Disco> LeerDiscosDeArtista (int idArtistaBuscado) {
-            string fullPath = Path.Combine(GetPath(), "datos_discos.txt");
-            List<Disco> resultados = new List<Disco>();
+            try {
+                string fullPath = Path.Combine(GetPath(), "datos_discos.txt");
+                List<Disco> resultados = new List<Disco>();
 
-            if (File.Exists(fullPath)) {
-                string[] lineas = File.ReadAllLines(fullPath);
+                if (File.Exists(fullPath)) {
+                    string[] lineas = File.ReadAllLines(fullPath);
 
-                foreach (string line in lineas) {
-                    var datos = line.Split('|');
+                    foreach (string line in lineas) {
+                        var datos = line.Split('|');
 
-                    // Extraemos el ID del artista de la línea actual del archivo
-                    int idArtistaDelArchivo = int.Parse(datos[6]);
+                        // Extraemos el ID del artista de la línea actual del archivo
+                        int idArtistaDelArchivo = int.Parse(datos[6]);
 
-                    // Comparamos si el ID del artista del archivo es igual al que buscamos
-                    if (idArtistaDelArchivo == idArtistaBuscado) {
-                        // Si coinciden, creamos el objeto Disco y lo agregamos a la lista
-                        Disco unDisco = new Disco(datos[1], int.Parse(datos[2]), int.Parse(datos[3]), int.Parse(datos[4]), datos[5]);
-                        unDisco.setID(int.Parse(datos[0]));
-                        resultados.Add(unDisco);
+                        // Comparamos si el ID del artista del archivo es igual al que buscamos
+                        if (idArtistaDelArchivo == idArtistaBuscado) {
+                            // Si coinciden, creamos el objeto Disco y lo agregamos a la lista
+                            Disco unDisco = new Disco(datos[1], int.Parse(datos[2]), int.Parse(datos[3]), int.Parse(datos[4]), datos[5]);
+                            unDisco.setID(int.Parse(datos[0]));
+                            resultados.Add(unDisco);
+                        }
                     }
                 }
+                // Devolvemos la lista de resultados (estará vacía si no se encontró el archivo o no había discos)
+                return resultados;
+            } catch (Exception e){
+                throw new Exception("Error al leer los discos del artista:",e);
+
             }
-            // Devolvemos la lista de resultados (estará vacía si no se encontró el archivo o no había discos)
-            return resultados;
         }
     }
 }

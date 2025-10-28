@@ -12,7 +12,7 @@ namespace Proyecto1.Modelos
         private int _id = 0;
         private string _nombre;
         private int _anioLanzamiento;
-        private int _cantidadCanciones;
+        private int _cantidadCanciones = 0;
         private int _duracionTotal;
         private string _tipoDisco; //estudio, en vivo, antología, etc
 
@@ -22,6 +22,15 @@ namespace Proyecto1.Modelos
         {
             _nombre = nombre;
             _anioLanzamiento = anioLanzamiento;
+            _duracionTotal = duracionTotal;
+            _tipoDisco = tipoDisco;
+        }
+
+        //Constructor sobrecargado
+        public Disco(string nombre, int anioLanzamiento,int cantidadCanciones, int duracionTotal, string tipoDisco) {
+            _nombre = nombre;
+            _anioLanzamiento = anioLanzamiento;
+            _cantidadCanciones = cantidadCanciones;
             _duracionTotal = duracionTotal;
             _tipoDisco = tipoDisco;
         }

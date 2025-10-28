@@ -58,7 +58,8 @@ namespace Proyecto1.Persistencia
         public static void GuardarArtista(Artista unArtista)
         {
             string fullPath = Path.Combine(GetPath(), "datos_artistas.txt");
-            unArtista.setID(_ultimoID + 1);
+            _ultimoID++;
+            unArtista.setID(_ultimoID);
             if (!File.Exists(fullPath))
             {
                 // El archivo no existe

@@ -154,11 +154,9 @@
             // 
             nupCantidadCanciones.Location = new Point(254, 235);
             nupCantidadCanciones.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            nupCantidadCanciones.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupCantidadCanciones.Name = "nupCantidadCanciones";
             nupCantidadCanciones.Size = new Size(138, 31);
             nupCantidadCanciones.TabIndex = 46;
-            nupCantidadCanciones.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label1
             // 
@@ -173,11 +171,9 @@
             // 
             nupDuracionTotal.Location = new Point(254, 279);
             nupDuracionTotal.Maximum = new decimal(new int[] { 5400, 0, 0, 0 });
-            nupDuracionTotal.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nupDuracionTotal.Name = "nupDuracionTotal";
             nupDuracionTotal.Size = new Size(138, 31);
             nupDuracionTotal.TabIndex = 48;
-            nupDuracionTotal.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label7
             // 

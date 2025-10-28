@@ -40,6 +40,7 @@ namespace Proyecto1
                 this.Hide(); //Ocultamos el formulario inicial de 
                 FrmDiscos frmDiscos = new FrmDiscos(this); //Instanciamos el próximo formulario
                 frmDiscos.setArtista((Artista)lstArtistas.SelectedItem);
+                frmDiscos.altaDisco();
                 cargarListado();
                 limpiarDatosEntrada();
                 DialogResult resultado = frmDiscos.ShowDialog();
@@ -75,7 +76,22 @@ namespace Proyecto1
         }
 
         private void btnDiscos_Click (object sender, EventArgs e) {
-
+            if (this.lstArtistas.SelectedItems.Count > 0) {
+                this.Hide(); //Ocultamos el formulario inicial de 
+                FrmDiscos frmDiscos = new FrmDiscos(this); //Instanciamos el próximo formulario
+                frmDiscos.setArtista((Artista)lstArtistas.SelectedItem);
+                frmDiscos.verDiscos();
+                cargarListado();
+                limpiarDatosEntrada();
+                DialogResult resultado = frmDiscos.ShowDialog();
+                if (resultado != DialogResult.Abort) {
+                    this.Show();// Solo si no se eligió 'salir'
+                } else {
+                    Application.Exit();// O simplemente no hacer nada
+                }
+            } else {
+                MessageBox.Show("Debe seleccionar un Artista", "Ups!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

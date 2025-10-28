@@ -10,9 +10,9 @@ namespace Proyecto1.Controladores
 {
     internal class ControladorDiscos
     {
-        public static bool GuardarDisco(Artista unArtista, string nombre, int anioPublicacion, int cantidadCanciones, int duracionTotal, string tipoDisco)
+        public static bool GuardarDisco(Artista unArtista, string nombre, int anioPublicacion, int duracionTotal, string tipoDisco)
         {
-            Disco discoNuevo = new Disco(nombre, anioPublicacion, cantidadCanciones, duracionTotal, tipoDisco);
+            Disco discoNuevo = new Disco(nombre, anioPublicacion, duracionTotal, tipoDisco);
             unArtista.agregarDisco(discoNuevo);
             return (PersistenciaDiscos.GuardarDisco(discoNuevo, unArtista.getID()));
         }
@@ -20,13 +20,17 @@ namespace Proyecto1.Controladores
             PersistenciaDiscos.ObtenerUltimoID();
         }
         public static List<Disco> ObtenerDiscos (int idArtista) {
-            List<Disco> listado = new List<Disco>();
-            listado = PersistenciaDiscos.LeerDiscosDeArtista(idArtista);
-            // Si esto es null no existe el archivo
-            if (listado.Count > 0) {
-                return listado;
-            } else {
-                throw new Exception("No hay discos cargados");
+            try {
+                List<Disco> listado = new List<Disco>();
+                listado = PersistenciaDiscos.LeerDiscosDeArtista(idArtista);
+                // Si esto es null no existe el archivo
+                if (listado.Count > 0) {
+                    return listado;
+                } else {
+                    return new List<Disco>();
+                }
+            } catch (Exception) {
+                throw;
             }
         }
     }

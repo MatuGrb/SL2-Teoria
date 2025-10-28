@@ -27,6 +27,16 @@ namespace Proyecto1
             _artistaCargado = unArtista;
             txtNombreArtista.Text = _artistaCargado.NombreArtistico;
         }
+        
+        public void altaDisco (){
+            lstDiscos.Hide();
+        }
+
+        public void verDiscos () {
+            lstDiscos.Show();
+            limpiarDatosEntrada();
+            cargarListado(_artistaCargado.getID());
+        }
 
         private void btnGuardar_Click (object sender, EventArgs e) {
             try {
@@ -41,14 +51,13 @@ namespace Proyecto1
                 int cantidadCanciones = (int)nupCantidadCanciones.Value;
                 int duracionTotal = (int)nupDuracionTotal.Value;
                 string tipoDisco = cbxTipoDisco.SelectedItem.ToString();
-                respuesta = ControladorDiscos.GuardarDisco(_artistaCargado, nombre, anioLanzamiento, cantidadCanciones, duracionTotal, tipoDisco);
+                respuesta = ControladorDiscos.GuardarDisco(_artistaCargado, nombre, anioLanzamiento, duracionTotal, tipoDisco);
                 if (respuesta) {
                     MessageBox.Show("Disco guardado correctamente, se ha creado un nuevo archivo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }else{
+                } else {
                     MessageBox.Show("Disco guardado correctamente, se ha actualizado el archivo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                    limpiarDatosEntrada();
-                cargarListado(_artistaCargado.getID());
+                limpiarDatosEntrada();
             } catch (Exception ex){
                 MessageBox.Show(ex.Message, "Error al Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -56,7 +65,6 @@ namespace Proyecto1
 
         private void FrmDiscos_Load (object sender, EventArgs e) {
             ControladorDiscos.InicializarUltimoID();
-            cargarListado(_artistaCargado.getID());
         }
 
         private void btnVolver_Click (object sender, EventArgs e) {
@@ -76,7 +84,7 @@ namespace Proyecto1
                     this.lstDiscos.Items.Add(disco);
                 }
             } catch (Exception ex) {
-                MessageBox.Show("No hay discos cargados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
