@@ -9,24 +9,35 @@ using System.Threading.Tasks;
 namespace Proyecto1.Controladores {
     internal class ControladorCanciones {
 
-        public static void GuardarCancion (string nombre,int anioLanzamiento, int duracion, Disco discoRelacionado) {
+        public static bool GuardarCancion (string nombre,int anioLanzamiento, int duracion, Disco discoRelacionado) {
             Cancion unaCancion = new Cancion(nombre, anioLanzamiento, duracion, discoRelacionado);
-            //PersistenciaArtistas.GuardarCancion(unaCancion); IMPLEMENTARRRRRRRRRRRRRRRRRRRRRRRR
-        }
-
-        public static List<Cancion> ObtenerCanciones () {
-            List<Cancion> listado = new List<Cancion>();
-            //listado = PersistenciaCanciones.LeerCanciones();
-            // Si esto es null no existe el archivo
-            if (listado.Count > 0) {
-                return listado;
-            } else {
-                throw new Exception("No hay canciones cargadas");
-            }
+            discoRelacionado.AgregarCancion(unaCancion);
+            return (PersistenciaCanciones.GuardarCancion(unaCancion, discoRelacionado.getID())); 
         }
 
         public static void InicializarUltimoID () {
-            //PersistenciaCanciones.ObtenerUltimoID();
+            PersistenciaCanciones.ObtenerUltimoID();
+        }
+
+        public static List<Cancion> ObtenerCanciones (int idDisco) {
+            try
+            {
+                List<Cancion> listCanciones = new List<Cancion>();
+                listCanciones = PersistenciaCanciones.LeerCanciones(idDisco);
+                // Si esto es null no existe el archivo
+                if (listCanciones.Count > 0)
+                {
+                    return listCanciones;
+                }
+                else
+                {
+                    throw new Exception("No hay canciones cargadas");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener las canciones: " + ex.Message);
+            }
         }
     }
 }

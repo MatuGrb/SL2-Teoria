@@ -72,7 +72,19 @@ namespace Proyecto1
         }
 
         private void btnCargarCancion_Click (object sender, EventArgs e) {
-            //Falta implementar 
+            if (this.lstDiscos.SelectedItems.Count > 0) {
+                this.Hide(); //Ocultamos el formulario inicial de 
+                FrmCanciones frmCanciones = new FrmCanciones(this); //Instanciamos el próximo formulario
+                frmCanciones.setDisco((Disco)lstDiscos.SelectedItem);
+                DialogResult resultado = frmCanciones.ShowDialog();
+                if (resultado != DialogResult.Abort) {
+                    this.Show();// Solo si no se eligió 'salir'
+                } else {
+                    Application.Exit();// O simplemente no hacer nada
+                }
+            } else {
+                MessageBox.Show("Debe seleccionar un Disco", "Ups!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void cargarListado (int idArtista) {
