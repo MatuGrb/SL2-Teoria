@@ -75,7 +75,7 @@ namespace Proyecto1 {
                     MessageBox.Show("Canción guardada correctamente, se ha actualizado el archivo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                cargarListado();
+                CargarListado();
                 limpiarDatosEntrada();
             }
             catch
@@ -84,7 +84,7 @@ namespace Proyecto1 {
             }
 
         }
-        private void cargarListado()
+        private void CargarListado()
         {
             // Primero, limpiar la lista
             this.lstCanciones.Items.Clear();
@@ -113,6 +113,7 @@ namespace Proyecto1 {
         private void FrmCanciones_Load(object sender, EventArgs e)
         {
             ControladorCanciones.InicializarUltimoID();
+            CargarListado();
         }
     }
 }
