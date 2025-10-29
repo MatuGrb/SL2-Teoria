@@ -110,5 +110,13 @@ namespace Proyecto1.Persistencia
                 return resultados;
             }
         }
+        public static int CantidadDiscos (int idArtista) {
+            try {
+                int cantidadDiscos = PersistenciaDiscos.LeerDiscosDeArtista(idArtista).Count;
+                return cantidadDiscos;
+            }catch (Exception) {
+                throw;
+            }
+        }
     }
 }

@@ -22,8 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent () {
             nupDuracionSeg = new NumericUpDown();
             label7 = new Label();
             btnGuardar = new Button();
@@ -162,6 +161,7 @@
             // 
             // txtDisco
             // 
+            txtDisco.Enabled = false;
             txtDisco.Location = new Point(291, 263);
             txtDisco.Margin = new Padding(3, 4, 3, 4);
             txtDisco.Name = "txtDisco";

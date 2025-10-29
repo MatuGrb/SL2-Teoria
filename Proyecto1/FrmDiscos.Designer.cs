@@ -26,8 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent () {
             btnGuardar = new Button();
             cbxTipoDisco = new ComboBox();
             nupAnioPublicacion = new NumericUpDown();
@@ -39,8 +38,6 @@
             label3 = new Label();
             label2 = new Label();
             label9 = new Label();
-            nupCantidadCanciones = new NumericUpDown();
-            label1 = new Label();
             nupDuracionTotal = new NumericUpDown();
             label7 = new Label();
             btnVolver = new Button();
@@ -48,13 +45,12 @@
             lstDiscos = new ListBox();
             label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)nupAnioPublicacion).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nupCantidadCanciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupDuracionTotal).BeginInit();
             SuspendLayout();
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(317, 368);
+            btnGuardar.Location = new Point(317, 321);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(169, 35);
             btnGuardar.TabIndex = 42;
@@ -66,7 +62,7 @@
             // 
             cbxTipoDisco.FormattingEnabled = true;
             cbxTipoDisco.Items.AddRange(new object[] { "En vivo", "Estudio", "Antología", "Otros" });
-            cbxTipoDisco.Location = new Point(254, 316);
+            cbxTipoDisco.Location = new Point(254, 269);
             cbxTipoDisco.Name = "cbxTipoDisco";
             cbxTipoDisco.Size = new Size(336, 33);
             cbxTipoDisco.TabIndex = 40;
@@ -99,7 +95,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(70, 319);
+            label6.Location = new Point(70, 272);
             label6.Name = "label6";
             label6.Size = new Size(123, 25);
             label6.TabIndex = 35;
@@ -153,26 +149,9 @@
             label9.TabIndex = 30;
             label9.Text = "Escuchify 1.1";
             // 
-            // nupCantidadCanciones
-            // 
-            nupCantidadCanciones.Location = new Point(254, 235);
-            nupCantidadCanciones.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            nupCantidadCanciones.Name = "nupCantidadCanciones";
-            nupCantidadCanciones.Size = new Size(138, 31);
-            nupCantidadCanciones.TabIndex = 46;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(70, 237);
-            label1.Name = "label1";
-            label1.Size = new Size(169, 25);
-            label1.TabIndex = 45;
-            label1.Text = "Cantidad canciones:";
-            // 
             // nupDuracionTotal
             // 
-            nupDuracionTotal.Location = new Point(254, 279);
+            nupDuracionTotal.Location = new Point(254, 232);
             nupDuracionTotal.Maximum = new decimal(new int[] { 5400, 0, 0, 0 });
             nupDuracionTotal.Name = "nupDuracionTotal";
             nupDuracionTotal.Size = new Size(138, 31);
@@ -181,7 +160,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(70, 281);
+            label7.Location = new Point(70, 234);
             label7.Name = "label7";
             label7.Size = new Size(128, 25);
             label7.TabIndex = 47;
@@ -189,7 +168,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(133, 368);
+            btnVolver.Location = new Point(133, 321);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(169, 35);
             btnVolver.TabIndex = 49;
@@ -199,7 +178,7 @@
             // 
             // btnCargarCancion
             // 
-            btnCargarCancion.Location = new Point(206, 563);
+            btnCargarCancion.Location = new Point(206, 507);
             btnCargarCancion.Name = "btnCargarCancion";
             btnCargarCancion.Size = new Size(169, 35);
             btnCargarCancion.TabIndex = 50;
@@ -211,7 +190,7 @@
             // 
             lstDiscos.FormattingEnabled = true;
             lstDiscos.ItemHeight = 25;
-            lstDiscos.Location = new Point(12, 454);
+            lstDiscos.Location = new Point(12, 398);
             lstDiscos.Margin = new Padding(3, 2, 3, 2);
             lstDiscos.Name = "lstDiscos";
             lstDiscos.Size = new Size(578, 104);
@@ -220,7 +199,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(4, 427);
+            label8.Location = new Point(4, 371);
             label8.Name = "label8";
             label8.Size = new Size(211, 25);
             label8.TabIndex = 52;
@@ -230,15 +209,13 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(605, 610);
+            ClientSize = new Size(605, 549);
             Controls.Add(label8);
             Controls.Add(lstDiscos);
             Controls.Add(btnCargarCancion);
             Controls.Add(btnVolver);
             Controls.Add(nupDuracionTotal);
             Controls.Add(label7);
-            Controls.Add(nupCantidadCanciones);
-            Controls.Add(label1);
             Controls.Add(btnGuardar);
             Controls.Add(cbxTipoDisco);
             Controls.Add(nupAnioPublicacion);
@@ -256,7 +233,6 @@
             Text = "FrmDiscos";
             Load += FrmDiscos_Load;
             ((System.ComponentModel.ISupportInitialize)nupAnioPublicacion).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nupCantidadCanciones).EndInit();
             ((System.ComponentModel.ISupportInitialize)nupDuracionTotal).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -274,8 +250,6 @@
         private Label label3;
         private Label label2;
         private Label label9;
-        private NumericUpDown nupCantidadCanciones;
-        private Label label1;
         private NumericUpDown nupDuracionTotal;
         private Label label7;
         private Button btnVolver;

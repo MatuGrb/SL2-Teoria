@@ -26,8 +26,7 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent () {
             lstArtistas = new ListBox();
             label8 = new Label();
             btnGuardar = new Button();
@@ -43,7 +42,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            button1 = new Button();
             btnDiscos = new Button();
             ((System.ComponentModel.ISupportInitialize)nupAnioInicio).BeginInit();
             SuspendLayout();
@@ -182,19 +180,9 @@
             label1.TabIndex = 15;
             label1.Text = "Escuchify 1.1";
             // 
-            // button1
-            // 
-            button1.Location = new Point(327, 524);
-            button1.Name = "button1";
-            button1.Size = new Size(263, 35);
-            button1.TabIndex = 30;
-            button1.Text = "Cargar un disco al artista";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // btnDiscos
             // 
-            btnDiscos.Location = new Point(57, 524);
+            btnDiscos.Location = new Point(328, 514);
             btnDiscos.Name = "btnDiscos";
             btnDiscos.Size = new Size(263, 35);
             btnDiscos.TabIndex = 31;
@@ -206,9 +194,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(610, 577);
+            ClientSize = new Size(610, 558);
             Controls.Add(btnDiscos);
-            Controls.Add(button1);
             Controls.Add(lstArtistas);
             Controls.Add(label8);
             Controls.Add(btnGuardar);
@@ -249,7 +236,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private Button button1;
         private Button btnDiscos;
     }
 }

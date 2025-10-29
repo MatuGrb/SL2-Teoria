@@ -40,6 +40,15 @@ namespace Proyecto1.Controladores
         {
             PersistenciaArtistas.ObtenerUltimoID();
         }
+        public static int CantidadDiscos (int idArtista) {
+            try {
+                int cantidadDiscos = PersistenciaArtistas.CantidadDiscos(idArtista);
+                return cantidadDiscos;
+
+            } catch (Exception) {
+                throw;
+            }
+        }
 
     }
 }

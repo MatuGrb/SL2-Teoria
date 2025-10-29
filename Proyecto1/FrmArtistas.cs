@@ -34,32 +34,14 @@ namespace Proyecto1
             cargarListado();
             ControladorArtistas.InicializarUltimoID();
         }
-
-        private void button1_Click (object sender, EventArgs e) {
-            if (this.lstArtistas.SelectedItems.Count > 0) {
-                this.Hide(); //Ocultamos el formulario inicial de 
-                FrmDiscos frmDiscos = new FrmDiscos(this); //Instanciamos el próximo formulario
-                frmDiscos.setArtista((Artista)lstArtistas.SelectedItem);
-                frmDiscos.altaDisco();
-                cargarListado();
-                limpiarDatosEntrada();
-                DialogResult resultado = frmDiscos.ShowDialog();
-                if (resultado != DialogResult.Abort) {
-                    this.Show();// Solo si no se eligió 'salir'
-                } else {
-                    Application.Exit();// O simplemente no hacer nada
-                }
-            } else {
-                MessageBox.Show("Debe seleccionar un Artista", "Ups!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void cargarListado () {
             // Primero, limpiar la lista
             this.lstArtistas.Items.Clear();
             try {
                 _listaArtistas = ControladorArtistas.ObternerArtistas();
                 foreach (var artista in _listaArtistas) {
+                    int cantidadDiscos = ControladorArtistas.CantidadDiscos(artista.getID());
+                    artista.setCantidadDiscos(cantidadDiscos);
                     this.lstArtistas.Items.Add(artista);
                 }
             } catch (Exception ex) {
@@ -80,15 +62,15 @@ namespace Proyecto1
                 this.Hide(); //Ocultamos el formulario inicial de 
                 FrmDiscos frmDiscos = new FrmDiscos(this); //Instanciamos el próximo formulario
                 frmDiscos.setArtista((Artista)lstArtistas.SelectedItem);
-                frmDiscos.verDiscos();
-                cargarListado();
-                limpiarDatosEntrada();
+                frmDiscos.altaDisco();
                 DialogResult resultado = frmDiscos.ShowDialog();
                 if (resultado != DialogResult.Abort) {
                     this.Show();// Solo si no se eligió 'salir'
                 } else {
                     Application.Exit();// O simplemente no hacer nada
                 }
+                cargarListado();
+                limpiarDatosEntrada();
             } else {
                 MessageBox.Show("Debe seleccionar un Artista", "Ups!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -33,12 +33,6 @@ namespace Proyecto1
 
         public void altaDisco()
         {
-            lstDiscos.Hide();
-        }
-
-        public void verDiscos()
-        {
-            lstDiscos.Show();
             limpiarDatosEntrada();
             cargarListado(_artistaCargado.getID());
         }
@@ -49,26 +43,22 @@ namespace Proyecto1
             {
                 bool respuesta = false;
                 //Comprobamos que los campos estén completos
-                if (txtNombreDisco.Text == String.Empty || nupAnioPublicacion.Value == 0 || nupCantidadCanciones.Value == 0 || nupDuracionTotal.Value == 0 || cbxTipoDisco.SelectedItem == null)
-                {
+                if (txtNombreDisco.Text == String.Empty || nupAnioPublicacion.Value == 0 || nupDuracionTotal.Value == 0 || cbxTipoDisco.SelectedItem == null){
                     MessageBox.Show("Debe completar todos los campos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 string nombre = txtNombreDisco.Text;
                 int anioLanzamiento = (int)nupAnioPublicacion.Value;
-                int cantidadCanciones = (int)nupCantidadCanciones.Value;
                 int duracionTotal = (int)nupDuracionTotal.Value;
                 string tipoDisco = cbxTipoDisco.SelectedItem.ToString();
                 respuesta = ControladorDiscos.GuardarDisco(_artistaCargado, nombre, anioLanzamiento, duracionTotal, tipoDisco);
-                if (respuesta)
-                {
+                if (respuesta) {
                     MessageBox.Show("Disco guardado correctamente, se ha creado un nuevo archivo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
+                } else {
                     MessageBox.Show("Disco guardado correctamente, se ha actualizado el archivo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 limpiarDatosEntrada();
+                cargarListado(_artistaCargado.getID());
             }
             catch (Exception ex)
             {
@@ -79,6 +69,7 @@ namespace Proyecto1
         private void FrmDiscos_Load(object sender, EventArgs e)
         {
             ControladorDiscos.InicializarUltimoID();
+            cargarListado(_artistaCargado.getID());
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -88,36 +79,43 @@ namespace Proyecto1
 
         private void btnCargarCancion_Click(object sender, EventArgs e)
         {
-            if (this.lstDiscos.SelectedItems.Count > 0)
-            {
+            if (this.lstDiscos.SelectedItems.Count > 0){
+
+                //Disco disc = (Disco)lstDiscos.SelectedItem;
+
+                //int cantidadCanciones = ControladorDiscos.CantidadCanciones(disc.getID());
+                //disc.setCantidadCancion(cantidadCanciones);
+
+                //if (disc.CantidadCanciones == cantidadCanciones) {
+                //    MessageBox.Show("Ya alcanzó el límite de canciones", "Ups!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //} xd 
+
                 this.Hide(); //Ocultamos el formulario inicial de 
                 FrmCanciones frmCanciones = new FrmCanciones(this); //Instanciamos el próximo formulario
                 frmCanciones.setDisco((Disco)lstDiscos.SelectedItem);
                 DialogResult resultado = frmCanciones.ShowDialog();
-                if (resultado != DialogResult.Abort)
-                {
+                if (resultado != DialogResult.Abort){
                     this.Show();// Solo si no se eligió 'salir'
                 }
-                else
-                {
+                else{
                     Application.Exit();// O simplemente no hacer nada
                 }
+                cargarListado(_artistaCargado.getID());
             }
-            else
-            {
+            else{
                 MessageBox.Show("Debe seleccionar un Disco", "Ups!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void cargarListado(int idArtista)
-        {
+        private void cargarListado(int idArtista){
             // Primero, limpiar la lista
             this.lstDiscos.Items.Clear();
-            try
-            {
+            try{
                 _listaDiscos = ControladorDiscos.ObtenerDiscos(idArtista);
-                foreach (var disco in _listaDiscos)
-                {
+                foreach (var disco in _listaDiscos){
+                    int cantidadCanciones = ControladorDiscos.CantidadCanciones(disco.getID());
+                    disco.setCantidadCancion(cantidadCanciones);
                     this.lstDiscos.Items.Add(disco);
                 }
             }
@@ -131,7 +129,6 @@ namespace Proyecto1
         {
             txtNombreDisco.Text = String.Empty;
             nupAnioPublicacion.Value = 1900;
-            nupCantidadCanciones.Value = 1;
             nupDuracionTotal.Value = 1;
             cbxTipoDisco.SelectedItem = null;
         }

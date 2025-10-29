@@ -33,5 +33,13 @@ namespace Proyecto1.Controladores
                 throw;
             }
         }
+        public static int CantidadCanciones (int idDisco) {
+            try {
+                int cantidadCanciones = PersistenciaDiscos.ObtenerCantidadCanciones(idDisco);
+                return cantidadCanciones;
+            } catch (Exception) {
+                throw;
+            }
+        }
     }
 }

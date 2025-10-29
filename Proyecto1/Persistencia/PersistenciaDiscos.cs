@@ -2,6 +2,7 @@
 using Proyecto1.Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -118,6 +119,19 @@ namespace Proyecto1.Persistencia
                 return null;
             } catch (Exception e){
                 throw new Exception("Error al buscar el disco por ID:",e);
+            }
+        }
+
+        public static int ObtenerCantidadCanciones (int idDisco) {
+            try {
+                // Creamos la instancia aquí dentro
+                int cantidadCanciones = PersistenciaCanciones.LeerCanciones(idDisco).Count;
+
+                // Devolvemos el valor
+                return cantidadCanciones;
+            } catch (Exception ex) {
+                Console.WriteLine($"Error al leer canciones del disco {idDisco}: {ex.Message}");
+                return 0;
             }
         }
     }

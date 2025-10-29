@@ -12,7 +12,7 @@ namespace Proyecto1.Modelos
         private int _id = 0;
         private string _nombre;
         private int _anioLanzamiento;
-        private int _cantidadCanciones = 0;
+        private int _cantidadCanciones;
         private int _duracionTotal;
         private string _tipoDisco; //estudio, en vivo, antología, etc
 
@@ -39,6 +39,10 @@ namespace Proyecto1.Modelos
 
         public int AnioLanzamiento { get { return _anioLanzamiento; } }
 
+        public void setCantidadCancion(int CantidadCanciones) {
+            this._cantidadCanciones = CantidadCanciones;
+        }
+
         public void AgregarCancion (Cancion unaCancion) {
             _listaCanciones.Add(unaCancion);
         }
@@ -55,7 +59,7 @@ namespace Proyecto1.Modelos
 
         public override string ToString()
         {
-            return $"Nombre: {_nombre}, Cantidad de Canciones: {_cantidadCanciones}, Tipo de Disco: {_tipoDisco}";
+            return $"Nombre: {_nombre}, Cantidad de canciones: {_cantidadCanciones}, Tipo de Disco: {_tipoDisco}";
         }
 
         public int CantidadCanciones { get { return _cantidadCanciones; } }

@@ -17,19 +17,16 @@ namespace Proyecto1.Persistencia
 
         public static void ObtenerUltimoID()
         {
-
             string fullPath = Path.Combine(GetPath(), "datos_canciones.txt");
             string ultimaLinea = string.Empty;
 
-            try
-            {
+            try{
                 // Intenta leer la última línea del archivo.
                 // File.ReadLines es eficiente ya que no carga todo el archivo en memoria.
                 string? ultimaLineaNullable = File.ReadLines(fullPath).LastOrDefault();
                 ultimaLinea = ultimaLineaNullable ?? string.Empty;
             }
-            catch (FileNotFoundException ex)
-            {
+            catch (FileNotFoundException ex){
                 // Maneja el caso en que la ruta del archivo es inválida o el archivo no existe.
                 Console.WriteLine($"Error: El archivo no fue encontrado en '{fullPath}'. Detalles: {ex.Message}");
                 // Aquí puedes registrar el error, notificar al usuario, o establecer un valor por defecto.

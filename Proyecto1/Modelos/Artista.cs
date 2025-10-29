@@ -15,7 +15,7 @@ namespace Proyecto1.Modelos
         private int _anioInicio;
         private string _nacionalidad;
         private string _discografica;
-
+        private int _CantidadDiscos;
         private List<Disco> _listaDiscos = new List<Disco>();
 
         // constructor de la clase
@@ -25,12 +25,6 @@ namespace Proyecto1.Modelos
             _nombreCompleto = nombreCompleto;
             _nombreArtistico = nombreArtistico;
         }
-
-        /// <summary>
-        /// Establece el valor del año de inicio de actividad del artista.
-        /// </summary>
-        /// <param name="anioInicio">El valor del año.</param>
-        /// <returns>No se devuelve un valor.</returns>
         public void setAnioInicio(int anioInicio)
         {
             _anioInicio = anioInicio;
@@ -71,7 +65,7 @@ namespace Proyecto1.Modelos
 
         public override string ToString()
         {
-            return $"{_nombreArtistico} ({_anioInicio}) - Discos cargados: {CantidadDiscos}";
+            return $"{_nombreArtistico} ({_anioInicio}) - Discos cargados: {_CantidadDiscos}";
         }
 
         public void agregarDisco(Disco discoNuevo)
@@ -93,6 +87,10 @@ namespace Proyecto1.Modelos
         public void setID(int id)
         {
             _id = id;
+        }
+        
+        public void setCantidadDiscos (int cantDisc){
+            this._CantidadDiscos = cantDisc;
         }
 
         public int CantidadDiscos
