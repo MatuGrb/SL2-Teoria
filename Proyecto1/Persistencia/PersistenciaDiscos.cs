@@ -95,5 +95,30 @@ namespace Proyecto1.Persistencia
 
             }
         }
+
+        public static Disco BuscarDiscoPorID (int idDiscoBuscado) {
+            try {
+                string fullPath = Path.Combine(GetPath(), "datos_discos.txt");
+                if (File.Exists(fullPath)) {
+                    string[] lineas = File.ReadAllLines(fullPath);
+                    foreach (string line in lineas) {
+                        var datos = line.Split('|');
+                        // Extraemos el ID del disco de la línea actual del archivo
+                        int idDiscoDelArchivo = int.Parse(datos[0]);
+                        // Comparamos si el ID del disco del archivo es igual al que buscamos
+                        if (idDiscoDelArchivo == idDiscoBuscado) {
+                            // Si coinciden, creamos el objeto Disco y lo devolvemos
+                            Disco unDisco = new Disco(datos[1], int.Parse(datos[2]), int.Parse(datos[3]), int.Parse(datos[4]), datos[5]);
+                            unDisco.setID(int.Parse(datos[0]));
+                            return unDisco;
+                        }
+                    }
+                }
+                // Si no se encontró el disco, devolvemos null
+                return null;
+            } catch (Exception e){
+                throw new Exception("Error al buscar el disco por ID:",e);
+            }
+        }
     }
 }

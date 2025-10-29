@@ -118,8 +118,9 @@ namespace Proyecto1.Persistencia
 
                         if (idDiscoArchivo == idDisco)
                         {
+                            Disco discoRelacionado = PersistenciaDiscos.BuscarDiscoPorID(idDisco); // Aquí podrías implementar la lógica para obtener el objeto Disco relacionado si es necesario.
                             // Si coinciden, creamos el objeto Cancion y lo agregamos a la lista
-                            Cancion unaCancion = new Cancion(datos[1], int.Parse(datos[2]), int.Parse(datos[3]), null);
+                            Cancion unaCancion = new Cancion(datos[1], int.Parse(datos[2]), int.Parse(datos[3]), discoRelacionado);
                             unaCancion.setID(int.Parse(datos[0]));
                             cancionesDisco.Add(unaCancion);
                         }
@@ -132,6 +133,12 @@ namespace Proyecto1.Persistencia
             {
                 throw new Exception("Error al leer las canciones:", e);
             }
+        }
+
+        public static int CantidadCancionesEnDisco(int idDisco)
+        {
+            List<Cancion> canciones = LeerCanciones(idDisco);
+            return canciones.Count;
         }
     }
 }

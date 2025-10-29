@@ -26,7 +26,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent () {
+        private void InitializeComponent()
+        {
             btnGuardar = new Button();
             cbxTipoDisco = new ComboBox();
             nupAnioPublicacion = new NumericUpDown();
@@ -45,6 +46,7 @@
             btnVolver = new Button();
             btnCargarCancion = new Button();
             lstDiscos = new ListBox();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)nupAnioPublicacion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupCantidadCanciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupDuracionTotal).BeginInit();
@@ -52,11 +54,11 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(421, 368);
+            btnGuardar.Location = new Point(317, 368);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(169, 35);
             btnGuardar.TabIndex = 42;
-            btnGuardar.Text = "Guardar";
+            btnGuardar.Text = "&Cargar Disco";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
@@ -120,6 +122,7 @@
             label4.Size = new Size(82, 25);
             label4.TabIndex = 33;
             label4.Text = "Nombre:";
+            label4.Click += label4_Click;
             // 
             // label3
             // 
@@ -186,21 +189,21 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(70, 368);
+            btnVolver.Location = new Point(133, 368);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(169, 35);
             btnVolver.TabIndex = 49;
-            btnVolver.Text = "Volver";
+            btnVolver.Text = "&Regresar";
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
             // btnCargarCancion
             // 
-            btnCargarCancion.Location = new Point(246, 368);
+            btnCargarCancion.Location = new Point(206, 563);
             btnCargarCancion.Name = "btnCargarCancion";
             btnCargarCancion.Size = new Size(169, 35);
             btnCargarCancion.TabIndex = 50;
-            btnCargarCancion.Text = "Cargar Cancion";
+            btnCargarCancion.Text = "&Ver Canciones";
             btnCargarCancion.UseVisualStyleBackColor = true;
             btnCargarCancion.Click += btnCargarCancion_Click;
             // 
@@ -208,17 +211,27 @@
             // 
             lstDiscos.FormattingEnabled = true;
             lstDiscos.ItemHeight = 25;
-            lstDiscos.Location = new Point(12, 420);
+            lstDiscos.Location = new Point(12, 454);
             lstDiscos.Margin = new Padding(3, 2, 3, 2);
             lstDiscos.Name = "lstDiscos";
             lstDiscos.Size = new Size(578, 104);
             lstDiscos.TabIndex = 51;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(4, 427);
+            label8.Name = "label8";
+            label8.Size = new Size(211, 25);
+            label8.TabIndex = 52;
+            label8.Text = "Lista de Discos cargados:";
+            // 
             // FrmDiscos
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(605, 535);
+            ClientSize = new Size(605, 610);
+            Controls.Add(label8);
             Controls.Add(lstDiscos);
             Controls.Add(btnCargarCancion);
             Controls.Add(btnVolver);
@@ -268,5 +281,6 @@
         private Button btnVolver;
         private Button btnCargarCancion;
         private ListBox lstDiscos;
+        private Label label8;
     }
 }

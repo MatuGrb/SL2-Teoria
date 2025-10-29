@@ -115,5 +115,10 @@ namespace Proyecto1 {
             ControladorCanciones.InicializarUltimoID();
             CargarListado();
         }
+
+        private void lstCanciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

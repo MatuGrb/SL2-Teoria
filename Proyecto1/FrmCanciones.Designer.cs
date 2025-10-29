@@ -38,6 +38,7 @@
             btnVolver = new Button();
             txtDisco = new TextBox();
             lstCanciones = new ListBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)nupDuracionSeg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nupAnioPublicacion).BeginInit();
             SuspendLayout();
@@ -64,12 +65,12 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(482, 328);
+            btnGuardar.Location = new Point(482, 316);
             btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(193, 47);
             btnGuardar.TabIndex = 59;
-            btnGuardar.Text = "Guardar";
+            btnGuardar.Text = "&Cargar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
@@ -150,12 +151,12 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(282, 328);
+            btnVolver.Location = new Point(282, 317);
             btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(193, 47);
             btnVolver.TabIndex = 65;
-            btnVolver.Text = "Volver";
+            btnVolver.Text = "&Regresar";
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
@@ -171,16 +172,27 @@
             // lstCanciones
             // 
             lstCanciones.FormattingEnabled = true;
-            lstCanciones.Location = new Point(81, 396);
+            lstCanciones.Location = new Point(81, 412);
             lstCanciones.Name = "lstCanciones";
-            lstCanciones.Size = new Size(577, 84);
+            lstCanciones.Size = new Size(577, 104);
             lstCanciones.TabIndex = 67;
+            lstCanciones.SelectedIndexChanged += lstCanciones_SelectedIndexChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(70, 389);
+            label3.Name = "label3";
+            label3.Size = new Size(198, 20);
+            label3.TabIndex = 68;
+            label3.Text = "Lista de Canciones cargadas:";
             // 
             // FrmCanciones
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(704, 499);
+            ClientSize = new Size(721, 534);
+            Controls.Add(label3);
             Controls.Add(lstCanciones);
             Controls.Add(txtDisco);
             Controls.Add(btnVolver);
@@ -221,5 +233,6 @@
         private Button btnVolver;
         private TextBox txtDisco;
         private ListBox lstCanciones;
+        private Label label3;
     }
 }

@@ -33,7 +33,8 @@ namespace Proyecto1.Modelos {
         }
 
         public override string ToString () {
-            return $"Nombre: {_nombreCancion}, Duración: {_duracionCancion} segundos, disco asociado: {_discoRelacionado}";
+            string nombreDisco = _discoRelacionado.Nombre;
+            return $"Nombre: {_nombreCancion}, Duración: {_duracionCancion} segundos, disco asociado: {nombreDisco}";
         }
 
         public int DuracionSeg { get { return _duracionCancion; } }
